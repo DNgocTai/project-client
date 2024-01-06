@@ -1,0 +1,46 @@
+<main class="container home">
+  <div class="home__container">
+    <div class="slideshow">
+      <div class="slideshow__inner">
+        <div class="slideshow__item">
+          <a href="#!" class="slideshow__link">
+            <picture>
+              <source
+                media="(max-width: 767.98px)"
+                srcset="../../../assets/images/bg/background-md.png"
+              />
+              <img
+                src="../../../assets/images/bg/background.png"
+                alt=""
+                class="slideshow__img"
+              />
+            </picture>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Browse Categories -->
+  <section class="home__container">
+    <div class="home__row">
+      <h2 class="home__heading">Browse Categories</h2>
+    </div>
+    <div class="home__cate row row-cols-3 row-cols-md-1 gy-2">
+      <!-- Category item-->
+      <app-category
+        *ngFor="let cat of categories; let idx = index"
+        [categoryName]="cat.name"
+        [avatarUrl]="cat.avatarUrl"
+        [isActive]="idx === tabActive"
+        [routerLink]="[cat.name.toLowerCase()]"
+        (click)="tabActive = idx"
+      ></app-category>
+    </div>
+  </section>
+
+  <!-- Browse Products -->
+  <section class="home__container">
+    <router-outlet></router-outlet>
+  </section>
+</main>

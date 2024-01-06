@@ -1,0 +1,27 @@
+<div class="act-dropdown__inner">
+  <img
+    src="../../../assets/images/icon/arrow-up.png"
+    alt=""
+    class="act-dropdown__arrow"
+  />
+  <div class="act-dropdown__top">
+    <h2 class="act-dropdown__title">You have 3 item(s)</h2>
+    <a class="act-dropdown__view-all" [routerLink]="['favourite-list']"
+      >See All</a
+    >
+  </div>
+  <div class="row row-cols-3 gx-2 act-dropdown__list">
+    <app-cart-item></app-cart-item>
+    <app-cart-item></app-cart-item>
+    <app-cart-item></app-cart-item>
+  </div>
+  <div class="act-dropdown__separate"></div>
+  <div class="act-dropdown__checkout">
+    <a
+      class="btn btn--primary btn--rounded act-dropdown__checkout-btn"
+      [routerLink]="['checkout']"
+    >
+      Check Out All
+    </a>
+  </div>
+</div>

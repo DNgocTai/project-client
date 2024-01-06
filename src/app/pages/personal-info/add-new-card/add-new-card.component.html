@@ -1,0 +1,190 @@
+<div class="cart-info">
+  <div class="row gy-3">
+    <div class="col-12">
+      <h2 class="cart-info__heading">
+        <a [routerLink]="['/personal-info']">
+          <img
+            src="../../../../assets/images/icon/arrow-left.svg"
+            alt=""
+            class="icon cart-info__back-arrow"
+          />
+        </a>
+        Add credit or debit card
+      </h2>
+
+      <form class="form form-card" [formGroup]="addNewCardForm">
+        <!-- Form row 1 -->
+        <div class="form__row">
+          <div class="form__group">
+            <label for="first-name" class="form__label form-card__label">
+              First Name
+            </label>
+            <div class="form__text-input">
+              <input
+                type="text"
+                name=""
+                id="first-name"
+                placeholder="First name"
+                formControlName="firstName"
+                class="form__input"
+                required
+                autofocus
+              />
+              <img
+                src="../../../../assets/images/icon/form_error.svg"
+                alt=""
+                class="form__input-icon-error"
+              />
+            </div>
+            <p class="form__error">Please enter your first name</p>
+          </div>
+          <div class="form__group">
+            <label for="last-name" class="form__label form-card__label">
+              Last Name
+            </label>
+            <div class="form__text-input">
+              <input
+                type="text"
+                name=""
+                id="last-name"
+                placeholder="Last name"
+                formControlName="lastName"
+                class="form__input"
+                required
+              />
+              <img
+                src="../../../../assets/images/icon/form_error.svg"
+                alt=""
+                class="form__input-icon-error"
+              />
+            </div>
+            <p class="form__error">Please enter your last name</p>
+          </div>
+        </div>
+
+        <!-- Form row 2 -->
+        <div class="form__row">
+          <div class="form__group">
+            <label for="card-number" class="form__label form-card__label">
+              Card Number
+            </label>
+            <div class="form__text-input">
+              <input
+                type="text"
+                name=""
+                id="card-number"
+                placeholder="Card Number"
+                formControlName="cardNumber"
+                class="form__input"
+                required
+              />
+              <img
+                src="../../../../assets/images/icon/form_error.svg"
+                alt=""
+                class="form__input-icon-error"
+              />
+            </div>
+            <p class="form__error">Please enter a valid card number</p>
+          </div>
+          <div class="form__group">
+            <label for="expiration-date" class="form__label form-card__label">
+              Expiration Date
+            </label>
+            <div class="form__text-input">
+              <input
+                type="text"
+                name=""
+                id="expiration-date"
+                placeholder="Expiration Date"
+                formControlName="expiryDate"
+                class="form__input"
+                required
+              />
+              <img
+                src="../../../../assets/images/icon/form_error.svg"
+                alt=""
+                class="form__input-icon-error"
+              />
+            </div>
+            <p class="form__error">Please enter a valid expiration date</p>
+          </div>
+        </div>
+
+        <!-- Form row 3 -->
+        <div class="form__row">
+          <div class="form__group">
+            <label for="card-cvv" class="form__label form-card__label">
+              CVV
+            </label>
+            <div class="form__text-input">
+              <input
+                type="text"
+                name=""
+                id="card-cvv"
+                placeholder="123"
+                class="form__input"
+                formControlName="cvv"
+                required
+              />
+              <img
+                src="../../../../assets/images/icon/form_error.svg"
+                alt=""
+                class="form__input-icon-error"
+              />
+            </div>
+            <p class="form__error">Please enter a valid CVV</p>
+          </div>
+          <div class="form__group">
+            <label for="phone-number" class="form__label form-card__label">
+              Phone Number
+            </label>
+            <div class="form__text-input">
+              <input
+                type="text"
+                name=""
+                id="phone-number"
+                placeholder="Phone Number"
+                formControlName="phoneNumber"
+                class="form__input"
+                required
+              />
+              <img
+                src="../../../../assets/images/icon/form_error.svg"
+                alt=""
+                class="form__input-icon-error"
+              />
+            </div>
+            <p class="form__error">Please enter a valid phone number</p>
+          </div>
+        </div>
+
+        <div class="form__group">
+          <label for="set-default-card" class="form__label form-card__label">
+            Card Preferences
+          </label>
+          <label class="form__checkbox">
+            <input
+              type="checkbox"
+              name=""
+              id="set-default-card"
+              checked
+              class="form__checkbox-input d-none"
+            />
+            <span class="form__checkbox-label">Set as default card</span>
+          </label>
+        </div>
+
+        <div class="form-card__bottom">
+          <a class="btn btn--text" [routerLink]="['/personal-info']">Cancel</a>
+          <button
+            [disabled]="addNewCardForm.invalid"
+            class="btn btn--primary btn--rounded"
+            (click)="addNewCard()"
+          >
+            Save card
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

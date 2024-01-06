@@ -1,0 +1,77 @@
+@import "../../../assets/styles/_color.scss";
+
+.top-bar-block {
+  background-color: $bg-color-primary;
+  margin-bottom: 3rem;
+  padding: 3rem 5rem;
+}
+
+.top-bar {
+  &-logo {
+    flex: 1 0 0;
+  }
+
+  &__logo-text {
+    font-size: 2.2rem;
+    line-height: 145.455%;
+    font-weight: 700;
+  }
+
+  &-menu {
+    flex: 2 0 0;
+  }
+
+  &-menu__link {
+    color: $text-color-1;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 146.667%;
+    text-decoration: none;
+  }
+
+  &-favourite-card {
+    .favourite-card {
+      font-weight: 700;
+      font-size: 1.5rem;
+      background-color: #fff;
+      padding: 1rem 2rem;
+      border-radius: 0.8rem;
+      box-shadow: 0px 20px 60px 10px rgba(237, 237, 246, 0.2);
+
+      &__icon {
+        padding: 3.25px 2.75px 2.709px 2.75px;
+      }
+
+      &__search {
+        cursor: pointer;
+        background-color: #fff;
+        padding: 1.3rem;
+        border-radius: 0.8rem;
+        box-shadow: 0px 20px 60px 10px rgba(237, 237, 246, 0.2);
+      }
+
+      &__love {
+        cursor: pointer;
+      }
+
+      &__cart {
+        cursor: pointer;
+      }
+
+      &__avatar {
+        cursor: pointer;
+        border-radius: 0.8rem;
+        width: 5rem;
+        height: 5rem;
+        background: url(../../../assets/images/avatar/Avatar.png) center center
+          no-repeat;
+      }
+    }
+  }
+}
+
+.separate {
+  width: 0.1rem;
+  height: 3rem;
+  background-color: $text-color-4;
+}

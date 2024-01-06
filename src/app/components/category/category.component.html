@@ -1,0 +1,11 @@
+<div class="col">
+  <a [routerLink]="[categoryName.toLowerCase()]">
+    <article [class]="isActive ? 'cate-item active' : 'cate-item'">
+      <img [src]="avatarUrl" alt="" class="cate-item__thumb" />
+      <div class="cate-item__info">
+        <h3 class="cate-item__title">{{ categoryName }}</h3>
+        <p class="cate-item__desc">New sumatra mandeling coffe blend</p>
+      </div>
+    </article>
+  </a>
+</div>

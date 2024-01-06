@@ -1,0 +1,11 @@
+@import "../../../assets/styles/color";
+
+.bg-cover {
+  border-radius: 2rem;
+  background-color: $primary-color-blue-sea;
+
+  &-img {
+    height: 100%;
+    width: 100%;
+  }
+}

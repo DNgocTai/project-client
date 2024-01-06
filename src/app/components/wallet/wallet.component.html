@@ -1,0 +1,21 @@
+<h2 class="cart-info__heading">My Wallet</h2>
+<p class="cart-info__desc profile__desc">Payment methods</p>
+
+<div class="row gy-md-2 row-cols-3 row-cols-xl-2 row-cols-lg-1">
+  <app-payment
+    *ngFor="let payment of payments"
+    [paymentCard]="payment"
+  ></app-payment>
+
+  <!-- Add new payment card -->
+  <div class="col">
+    <a class="new-card" [routerLink]="['/personal-info/add-new-card']">
+      <img
+        src="../../../assets/images/other/plus.png"
+        alt=""
+        class="new-card__icon icon"
+      />
+      <p class="new-card__text">Add New Card</p>
+    </a>
+  </div>
+</div>

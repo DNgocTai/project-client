@@ -1,0 +1,28 @@
+<!-- Breadcrumbs -->
+<div class="product-container">
+  <ul class="breadcrumbs">
+    <li>
+      <a href="#!" class="breadcrumbs__link" (click)="backToHome()">
+        Home
+        <img
+          src="../../../assets/images/icon/arrow-right.svg"
+          alt="Arrow right"
+        />
+      </a>
+    </li>
+    <li>
+      <a href="#!" class="breadcrumbs__link">
+        {{ catName }}
+        <img
+          src="../../../assets/images/icon/arrow-right.svg"
+          alt="Arrow right"
+        />
+      </a>
+    </li>
+    <li>
+      <a href="#!" class="breadcrumbs__link breadcrumbs__link--current">{{
+        prdName
+      }}</a>
+    </li>
+  </ul>
+</div>

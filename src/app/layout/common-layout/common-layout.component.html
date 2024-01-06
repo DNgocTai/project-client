@@ -1,0 +1,9 @@
+<!-- <app-top-bar></app-top-bar> -->
+<app-top-bar-logged
+  [isAuthenticated]="userIdentified"
+  [userLoggedIn]="userLoggedIn"
+></app-top-bar-logged>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+<app-footer></app-footer>

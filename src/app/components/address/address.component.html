@@ -1,0 +1,166 @@
+<article class="address-card">
+  <div class="address-card__left">
+    <div class="address-card__choose">
+      <label class="cart-info__checkbox">
+        <input
+          type="radio"
+          name="shipping-adress"
+          checked
+          class="cart-info__checkbox-input"
+        />
+      </label>
+    </div>
+    <div class="address-card__info">
+      <h3 class="address-card__title">Imran Khan</h3>
+      <p class="address-card__desc">
+        Museum of Rajas, Sylhet Sadar, Sylhet 3100.
+      </p>
+      <ul class="address-card__list">
+        <li class="address-card__list-item">Shipping</li>
+        <li class="address-card__list-item">Delivery from store</li>
+      </ul>
+    </div>
+  </div>
+  <div class="address-card__right">
+    <div class="address-card__ctrl">
+      <button
+        class="cart-info__edit-btn js-toggle"
+        toggle-target="#add-new-address"
+        (click)="openModalEdit = !openModalEdit"
+      >
+        <img class="icon" src="../../../assets/images/icon/edit.svg" alt="" />
+        Edit
+      </button>
+    </div>
+  </div>
+</article>
+
+<!-- Modal: address new shipping address -->
+<div
+  id="add-new-address"
+  [class]="openModalEdit ? 'modal show' : 'modal hide'"
+  style="--content-width: 650px"
+>
+  <div class="modal__content">
+    <form action="" class="form">
+      <h2 class="modal__heading">Add new shipping address</h2>
+      <div class="modal__body">
+        <div class="form__row">
+          <div class="form__group">
+            <label for="name" class="form__label form__label--small"
+              >Name</label
+            >
+            <div class="form__text-input form__text-input--small">
+              <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Name"
+                class="form__input"
+                required
+                minlength="2"
+              />
+              <img
+                src="../../../assets/images/icon/form_error.svg"
+                alt=""
+                class="form__input-icon-error"
+              />
+            </div>
+            <p class="form__error">Name must be at least 2 characters</p>
+          </div>
+          <div class="form__group">
+            <label for="phone" class="form__label form__label--small"
+              >Phone</label
+            >
+            <div class="form__text-input form__text-input--small">
+              <input
+                type="tel"
+                name="phone"
+                id="phone"
+                placeholder="Phone"
+                class="form__input"
+                required
+                minlength="10"
+              />
+              <img
+                src="../../../assets/images/icon/form_error.svg"
+                alt=""
+                class="form__input-icon-error"
+              />
+            </div>
+            <p class="form__error">Phone must be at least 10 characters</p>
+          </div>
+        </div>
+        <div class="form__group">
+          <label for="address" class="form__label form__label--small"
+            >Address</label
+          >
+          <div class="form__text-area">
+            <textarea
+              name="address"
+              id="address"
+              placeholder="Address (Area and street)"
+              class="form__text-area-input"
+              required
+            ></textarea>
+            <img
+              src="../../../assets/images/icon/form_error.svg"
+              alt=""
+              class="form__input-icon-error"
+            />
+          </div>
+          <p class="form__error">Address not empty</p>
+        </div>
+        <div class="form__group">
+          <label for="city" class="form__label form__label--small"
+            >City/District/Town</label
+          >
+          <div class="form__text-input form__text-input--small">
+            <select class="form__input">
+              <option class="form__option" selected value="hcm">
+                Binh Duong
+              </option>
+              <option class="form__option" value="hcm">Ho Chi Minh</option>
+              <option class="form__option" value="dn">Da Nang</option>
+              <option class="form__option" value="hn">Ha Noi</option>
+            </select>
+            <img
+              src="../../../assets/images/icon/form_error.svg"
+              alt=""
+              class="form__input-icon-error"
+            />
+          </div>
+          <p class="form__error">Phone must be at least 11 characters</p>
+        </div>
+        <div class="form__group form__group--inline">
+          <label class="form__checkbox">
+            <input
+              type="checkbox"
+              name=""
+              id=""
+              class="form__checkbox-input d-none"
+            />
+            <span class="form__checkbox-label">Set as default address</span>
+          </label>
+        </div>
+      </div>
+      <div class="modal__bottom">
+        <button
+          class="btn btn--small btn--text modal__btn js-toggle"
+          toggle-target="#add-new-address"
+          (click)="openModalEdit = !openModalEdit"
+        >
+          Cancel
+        </button>
+        <button
+          class="btn btn--small btn--primary modal__btn btn--no-margin js-toggle"
+          toggle-target="#add-new-address"
+          (click)="openModalEdit = !openModalEdit"
+        >
+          Create
+        </button>
+      </div>
+    </form>
+  </div>
+  <div class="modal__overlay"></div>
+</div>

@@ -1,0 +1,180 @@
+<nz-spin [nzSpinning]="isSpinning" [nzSize]="'large'">
+  <main class="auth">
+    <!-- Auth intro -->
+    <div class="auth__intro">
+      <a href="./" class="logo auth__intro-logo d-none d-md-flex">
+        <img
+          src="../../../assets/images/logo/logo.png"
+          alt="grocerymart"
+          class="logo__img"
+        />
+        <h1 class="logo__title">grocerymart</h1>
+      </a>
+      <img
+        src="../../../assets/images/auth/intro.svg"
+        alt=""
+        class="auth__intro-img"
+      />
+      <p class="auth__intro-text">
+        The best of luxury brand values, high quality products, and innovative
+        services
+      </p>
+      <button
+        class="auth__intro-next d-none d-md-flex js-toggle"
+        toggle-target="#auth-content"
+      >
+        <img
+          src="../../../assets/images/auth/intro-arrow.svg"
+          alt="Intro arrow"
+          (click)="toggleButton = true"
+        />
+      </button>
+    </div>
+
+    <!-- Auth content -->
+    <div
+      id="auth-content"
+      [class]="toggleButton ? 'auth__content show' : 'auth__content hide'"
+    >
+      <div class="auth__content-inner">
+        <a href="./" class="logo">
+          <img
+            src="../../../assets/images/logo/logo.png"
+            alt="grocerymart"
+            class="logo__img"
+          />
+          <h1 class="logo__title">grocerymart</h1>
+        </a>
+        <h1 class="auth__heading">Sign Up</h1>
+        <p class="auth__desc">
+          Let’s create your account and Shop like a pro and save money.
+        </p>
+        <form [formGroup]="signupForm" class="form auth__form">
+          <div class="form__group">
+            <div class="form__text-input">
+              <input
+                type="text"
+                name=""
+                id=""
+                placeholder="Full name"
+                class="form__input"
+                formControlName="fullName"
+                autofocus
+                required
+              />
+            </div>
+          </div>
+          <div class="form__group">
+            <div class="form__text-input">
+              <input
+                type="email"
+                name=""
+                id=""
+                placeholder="Email"
+                class="form__input"
+                formControlName="username"
+                autofocus
+                required
+              />
+              <img
+                src="../../../assets/images/icon/message.svg"
+                alt=""
+                class="form__input-icon"
+              />
+              <img
+                src="../../../assets/images/icon/form_error.svg"
+                alt=""
+                class="form__input-icon-error"
+              />
+            </div>
+            <p class="form__error">Email is not in correct format</p>
+          </div>
+          <div class="form__group">
+            <div class="form__text-input">
+              <input
+                type="password"
+                name=""
+                id=""
+                placeholder="Password"
+                formControlName="password"
+                class="form__input"
+                required
+                minlength="6"
+              />
+              <img
+                src="../../../assets/images/icon/lock.svg"
+                alt=""
+                class="form__input-icon"
+              />
+              <img
+                src="../../../assets/images/icon/form_error.svg"
+                alt=""
+                class="form__input-icon-error"
+              />
+            </div>
+            <p class="form__error">Password must be at least 6 characters</p>
+          </div>
+          <div class="form__group">
+            <div class="form__text-input">
+              <input
+                type="password"
+                name=""
+                id=""
+                placeholder="Confirm password"
+                formControlName="confirmPassword"
+                class="form__input"
+                required
+                minlength="6"
+              />
+              <img
+                src="../../../assets/images/icon/lock.svg"
+                alt=""
+                class="form__input-icon"
+              />
+              <img
+                src="../../../assets/images/icon/form_error.svg"
+                alt=""
+                class="form__input-icon-error"
+              />
+            </div>
+            <p class="form__error">Password must be at least 6 characters</p>
+          </div>
+          <div class="form__group form__group--inline">
+            <label class="form__checkbox">
+              <input
+                type="checkbox"
+                name=""
+                id=""
+                class="form__checkbox-input d-none"
+              />
+              <span class="form__checkbox-label">Remember me</span>
+            </label>
+          </div>
+          <div class="form__group auth__btn-group">
+            <button
+              (click)="signUp()"
+              class="btn btn--primary auth__btn form__submit-btn"
+            >
+              Sign Up
+            </button>
+            <button class="btn btn--outline auth__btn btn--no-margin">
+              <img
+                src="../../../assets/images/icon/google.svg"
+                alt=""
+                class="btn__icon icon"
+              />
+              Sign in with Google
+            </button>
+          </div>
+        </form>
+
+        <p class="auth__text">
+          You have an account yet?
+          <a [routerLink]="['/sign-in']" class="auth__link auth__text-link"
+            >Sign In</a
+          >
+        </p>
+      </div>
+    </div>
+  </main>
+</nz-spin>

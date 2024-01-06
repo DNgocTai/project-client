@@ -1,0 +1,30 @@
+<div class="cart-info">
+  <div class="cart-info__top">
+    <h2 class="cart-info__heading cart-info__heading--lv2">
+      1. Shipping, arrives between Mon, May 16—Tue, May 24
+    </h2>
+    <a class="cart-info__edit-btn" [routerLink]="'/shipping'">
+      <img class="icon" src="../../../assets/images/icon/edit.svg" alt="Edit" />
+      Edit
+    </a>
+  </div>
+
+  <!-- Payment item 1 -->
+  <article class="payment-item">
+    <div class="payment-item__info">
+      <h3 class="payment-item__title">Imran Khan</h3>
+      <p class="payment-item__desc">
+        Museum of Rajas, Sylhet Sadar, Sylhet 3100.
+      </p>
+    </div>
+  </article>
+
+  <!-- Payment item 2 -->
+  <article class="payment-item">
+    <div class="payment-item__info">
+      <h3 class="payment-item__title">Items details</h3>
+      <p class="payment-item__desc">2 items</p>
+    </div>
+    <a [routerLink]="'/shipping'" class="payment-item__detail">View details</a>
+  </article>
+</div>

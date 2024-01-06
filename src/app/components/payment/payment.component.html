@@ -1,0 +1,25 @@
+<div class="col">
+  <article class="payment-card" style="--bg-color: #1e2e69">
+    <img
+      src="../../../assets/card/plane-bg.svg"
+      alt=""
+      class="payment-card__img"
+    />
+    <div class="payment-card__top">
+      <img src="../../../assets/card/plane.svg" alt="" />
+      <span class="payment-card__type">FeatherCard</span>
+    </div>
+    <div class="payment-card__number">{{ paymentCard?.cardNumber }}</div>
+    <div class="payment-card__bottom">
+      <div>
+        <p class="payment-card__label">Card Holder</p>
+        <p class="payment-card__value">{{ paymentCard?.firstName }}</p>
+      </div>
+      <div class="payment-card__expired">
+        <p class="payment-card__label">Expired</p>
+        <p class="payment-card__value">{{ paymentCard?.expiryDate }}</p>
+      </div>
+      <div class="payment-card__circle"></div>
+    </div>
+  </article>
+</div>

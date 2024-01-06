@@ -1,0 +1,38 @@
+<div class="col">
+  <article class="product-card">
+    <div class="product-card__img-wrap">
+      <a [routerLink]="['/product', product._id]">
+        <img
+          [src]="product.avatarUrl"
+          alt="product"
+          class="product-card__thumb"
+        />
+      </a>
+      <button class="like-btn product-card__like-btn">
+        <img
+          src="../../../assets/images/icon/heart.svg"
+          alt=""
+          class="like-btn__icon icon"
+        />
+        <!-- <img
+          src="./assets/icons/heart-red.svg"
+          alt=""
+          class="like-btn__icon--liked"
+        /> -->
+      </button>
+    </div>
+    <h3 class="product-card__title">
+      <a href="./product-detail.html">{{ product.name }}</a>
+    </h3>
+    <p class="product-card__brand">{{ product.categoryName }}</p>
+    <div class="product-card__row">
+      <span class="product-card__price">{{ product.price | currency }}</span>
+      <img
+        src="../../../assets/images/icon/star.svg"
+        alt=""
+        class="product-card__star"
+      />
+      <span class="product-card__score">{{ product.star }}</span>
+    </div>
+  </article>
+</div>

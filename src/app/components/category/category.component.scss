@@ -1,0 +1,11 @@
+@use "../../../assets/styles/css/main.css";
+@import "../../../assets/styles/color";
+
+.active {
+  background-color: $primary-color-blue-sea;
+}
+
+.active .cate-item__title,
+.active .cate-item__desc {
+  color: #fff;
+}

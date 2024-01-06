@@ -1,0 +1,228 @@
+<div class="header">
+  <div class="container">
+    <div class="top-bar">
+      <!-- More -->
+      <button
+        class="top-bar__more d-none d-lg-block js-toggle"
+        toggle-target="#navbar"
+      >
+        <img
+          src="../../../assets/images/icon/more.svg"
+          alt=""
+          class="icon top-bar__more-icon"
+        />
+      </button>
+
+      <!-- Logo -->
+      <a [routerLink]="'/homepage'" class="logo top-bar__logo">
+        <img
+          src="../../../assets/images/logo/logo.png"
+          alt="grocerymart"
+          class="logo__img top-bar__logo-img"
+        />
+        <h1 class="logo__title top-bar__logo-title">grocerymart</h1>
+      </a>
+
+      <!-- Navbar -->
+      <nav id="navbar" class="navbar hide">
+        <button class="navbar__close-btn js-toggle" toggle-target="#navbar">
+          <img
+            class="icon"
+            src="../../../assets/images/icon/arrow-left.svg"
+            alt=""
+          />
+        </button>
+
+        <a href="./checkout.html" class="nav-btn d-none d-md-flex">
+          <img
+            src="../../../assets/images/other/Buy.png"
+            alt=""
+            class="nav-btn__icon icon"
+          />
+          <span class="nav-btn__title">Cart</span>
+          <span class="nav-btn__qnt">3</span>
+        </a>
+
+        <a href="#!" class="nav-btn d-none d-md-flex">
+          <img
+            src="../../../assets/images/icon/heart.svg"
+            alt=""
+            class="nav-btn__icon icon"
+          />
+          <span class="nav-btn__title">Favorite</span>
+          <span class="nav-btn__qnt">3</span>
+        </a>
+
+        <ul class="navbar__list js-dropdown-list">
+          <li class="navbar__item">
+            <a href="#!" class="navbar__link">
+              Departments
+              <img
+                src="../../../assets/images/other/arrow-down.png"
+                alt=""
+                class="icon navbar__arrow"
+              />
+            </a>
+          </li>
+          <li class="navbar__item">
+            <a href="#!" class="navbar__link">
+              Grocery
+              <img
+                src="../../../assets/images/other/arrow-down.png"
+                alt=""
+                class="icon navbar__arrow"
+              />
+            </a>
+          </li>
+          <li class="navbar__item">
+            <a href="#!" class="navbar__link">
+              Beauty
+              <img
+                src="../../../assets/images/other/arrow-down.png"
+                alt=""
+                class="icon navbar__arrow"
+              />
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <div class="navbar__overlay js-toggle" toggle-target="#navbar"></div>
+
+      <!-- Logged -->
+      <!-- Actions -->
+      <ng-container *ngIf="isAuthenticated; else unLoggedTpml">
+        <div class="top-act">
+          <div class="top-act__group d-md-none top-act__group--single">
+            <button class="top-act__btn">
+              <img
+                src="../../../assets/images/other/Search.png"
+                alt=""
+                class="icon top-act__icon"
+              />
+            </button>
+          </div>
+
+          <div class="top-act__group d-md-none">
+            <div class="top-act__btn-wrap">
+              <button class="top-act__btn" [routerLink]="['favourite-list']">
+                <img
+                  src="../../../assets/images/icon/heart.svg"
+                  alt=""
+                  class="icon top-act__icon"
+                />
+                <span class="top-act__title">{{
+                  userLoggedIn?.favourites?.length
+                }}</span>
+              </button>
+
+              <!-- Dropdown -->
+              <div class="act-dropdown">
+                <app-favourite-list></app-favourite-list>
+              </div>
+            </div>
+
+            <div class="top-act__separate"></div>
+
+            <div class="top-act__btn-wrap">
+              <button class="top-act__btn" [routerLink]="['checkout']">
+                <img
+                  src="../../../assets/images/other/Buy.png"
+                  alt=""
+                  class="icon top-act__icon"
+                />
+                <span class="top-act__title">{{
+                  userLoggedIn?.cash | currency : "VND"
+                }}</span>
+              </button>
+
+              <!-- Dropdown -->
+              <div class="act-dropdown">
+                <app-cart-list></app-cart-list>
+              </div>
+            </div>
+          </div>
+
+          <div class="top-act__user">
+            <img
+              [src]="userLoggedIn?.avatarUrl"
+              alt=""
+              class="top-act__avatar"
+            />
+
+            <!-- Dropdown -->
+            <div class="act-dropdown top-act__dropdown">
+              <div class="act-dropdown__inner user-menu">
+                <img
+                  src="../../../assets/images/icon/arrow-up.png"
+                  alt=""
+                  class="act-dropdown__arrow top-act__dropdown-arrow"
+                />
+
+                <div class="user-menu__top">
+                  <img
+                    [src]="userLoggedIn?.avatarUrl"
+                    alt=""
+                    class="user-menu__avatar"
+                  />
+                  <div>
+                    <p class="user-menu__name">{{ userLoggedIn?.fullName }}</p>
+                    <p>{{ userLoggedIn?.username }}</p>
+                  </div>
+                </div>
+
+                <ul class="user-menu__list">
+                  <li>
+                    <a [routerLink]="['/personal-info']" class="user-menu__link"
+                      >Profile</a
+                    >
+                  </li>
+                  <li>
+                    <a class="user-menu__link" [routerLink]="['favourite-list']"
+                      >Favourite list</a
+                    >
+                  </li>
+                  <li class="user-menu__separate">
+                    <a href="#!" class="user-menu__link" id="switch-theme-btn">
+                      <span>Dark mode</span>
+                      <img
+                        src="../../../assets/images/icon/sun.svg"
+                        alt=""
+                        class="icon user-menu__icon"
+                      />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#!" class="user-menu__link">Settings</a>
+                  </li>
+                  <li class="user-menu__separate">
+                    <a
+                      [routerLink]="['/sign-in']"
+                      (click)="logout()"
+                      class="user-menu__link"
+                      >Logout</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+      <!-- Unlog -->
+      <!-- Actions -->
+      <ng-template #unLoggedTpml>
+        <div class="top-act">
+          <a [routerLink]="['/sign-in']" class="btn btn--text d-md-none"
+            >Sign In</a
+          >
+          <a
+            [routerLink]="['/sign-up']"
+            class="top-act__sign-up btn btn--primary"
+            >Sign Up</a
+          >
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+<app-filter></app-filter>
+
+<div id="products" class="row row-cols-4 row-cols-lg-2 row-cols-sm-1 g-3">
+  <app-product-comp
+    *ngFor="let prd of products"
+    [product]="prd"
+  ></app-product-comp>
+</div>

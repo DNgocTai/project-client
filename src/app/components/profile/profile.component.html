@@ -1,0 +1,144 @@
+<aside class="profile__sidebar">
+  <!-- User -->
+  <div class="profile-user">
+    <img [src]="user?.avatarUrl" alt="avatar" class="profile-user__avatar" />
+    <h1 class="profile-user__name">{{ user?.fullName }}</h1>
+    <p class="profile-user__desc">Registered: {{ user?.createdAt | date }}</p>
+  </div>
+
+  <!-- Menu 1 -->
+  <div class="profile-menu">
+    <h3 class="profile-menu__title">Manage Account</h3>
+    <ul class="profile-menu__list">
+      <li>
+        <a [routerLink]="['edit-profile']" class="profile-menu__link">
+          <span class="profile-menu__icon">
+            <img
+              src="../../../assets/images/icon/profile.svg"
+              alt=""
+              class="icon"
+            />
+          </span>
+          Personal info
+        </a>
+      </li>
+      <li>
+        <a href="#!" class="profile-menu__link">
+          <span class="profile-menu__icon">
+            <img
+              src="../../../assets/images/icon/location.svg"
+              alt=""
+              class="icon"
+            />
+          </span>
+          Addresses
+        </a>
+      </li>
+      <li>
+        <a href="#!" class="profile-menu__link">
+          <span class="profile-menu__icon">
+            <img
+              src="../../../assets/images/icon/message-2.svg"
+              alt=""
+              class="icon"
+            />
+          </span>
+          Communications & privacy
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Menu 2 -->
+  <div class="profile-menu">
+    <h3 class="profile-menu__title">My items</h3>
+    <ul class="profile-menu__list">
+      <li>
+        <a href="#!" class="profile-menu__link">
+          <span class="profile-menu__icon">
+            <img
+              src="../../../assets/images/icon/download.svg"
+              alt=""
+              class="icon"
+            />
+          </span>
+          Reorder
+        </a>
+      </li>
+      <li>
+        <a href="#!" class="profile-menu__link">
+          <span class="profile-menu__icon">
+            <img
+              src="../../../assets/images/icon/heart.svg"
+              alt=""
+              class="icon"
+            />
+          </span>
+          Lists
+        </a>
+      </li>
+      <li>
+        <a href="#!" class="profile-menu__link">
+          <span class="profile-menu__icon">
+            <img
+              src="../../../assets/images/icon/gift-2.svg"
+              alt=""
+              class="icon"
+            />
+          </span>
+          Registries
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Menu 3 -->
+  <div class="profile-menu">
+    <h3 class="profile-menu__title">Subscriptions & plans</h3>
+    <ul class="profile-menu__list">
+      <li>
+        <a href="#!" class="profile-menu__link">
+          <span class="profile-menu__icon">
+            <img
+              src="../../../assets/images/icon/shield.svg"
+              alt=""
+              class="icon"
+            />
+          </span>
+          Protection plans
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Menu 4 -->
+  <div class="profile-menu">
+    <h3 class="profile-menu__title">Customer Service</h3>
+    <ul class="profile-menu__list">
+      <li>
+        <a href="#!" class="profile-menu__link">
+          <span class="profile-menu__icon">
+            <img
+              src="../../../assets/images/icon/info.svg"
+              alt=""
+              class="icon"
+            />
+          </span>
+          Help
+        </a>
+      </li>
+      <li>
+        <a href="#!" class="profile-menu__link">
+          <span class="profile-menu__icon">
+            <img
+              src="../../../assets/images/icon/danger.svg"
+              alt=""
+              class="icon"
+            />
+          </span>
+          Terms of Use
+        </a>
+      </li>
+    </ul>
+  </div>
+</aside>
