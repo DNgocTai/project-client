@@ -2,10 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ComponentsModule } from '../../components/components.module';
 import { RouterOutlet } from '@angular/router';
 import { AccountService } from '../../services/account.service';
-import { identity, mergeMap } from 'rxjs';
+import { identity, map, mergeMap } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { IUser } from '../../interface/user';
 import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
+import { ProductsService } from '../../services/products.service';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-common-layout',
@@ -17,11 +19,14 @@ import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 export class CommonLayoutComponent {
   userIdentified: any;
   userLoggedIn: IUser | undefined;
+  carts: any;
 
   constructor(
     private accountSrv: AccountService,
     private localStorageService: LocalStorageService,
-    private sessionStorageService: SessionStorageService
+    private sessionStorageService: SessionStorageService,
+    private productSrv: ProductsService,
+    private cartSrv: CartService
   ) {}
 
   ngOnInit(): void {
@@ -32,8 +37,8 @@ export class CommonLayoutComponent {
     if (token) {
       this.userIdentified = true;
       this.accountSrv.fetch().subscribe((res: any) => {
-        console.log({ ...res.data });
         this.userLoggedIn = { ...res.data };
+        console.log(this.userLoggedIn);
       });
     }
   }

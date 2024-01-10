@@ -1,7 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { IUser } from '../../interface/user';
 import { AuthJWTService } from '../../services/auth-jwt.service';
 import { Router } from '@angular/router';
+import { ProductsService } from '../../services/products.service';
+import { ICart } from '../../interface/cart';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-top-bar-logged',
@@ -11,6 +14,7 @@ import { Router } from '@angular/router';
 export class TopBarLoggedComponent {
   @Input() isAuthenticated: boolean = false;
   @Input() userLoggedIn: IUser | undefined;
+  @Input() carts: ICart | undefined;
 
   constructor(private authSrv: AuthJWTService) {}
 

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import {
   FormBuilder,
@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 import { IUser } from '../../../interface/user';
 import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 import { AccountService } from '../../../services/account.service';
+import { AuthJWTService } from '../../../services/auth-jwt.service';
 
 @Component({
   selector: 'app-add-new-card',
@@ -20,7 +21,7 @@ import { AccountService } from '../../../services/account.service';
   templateUrl: './add-new-card.component.html',
   styleUrl: './add-new-card.component.scss',
 })
-export class AddNewCardComponent {
+export class AddNewCardComponent implements OnInit {
   userLoggedIn: IUser | undefined;
   token: string = '';
 
@@ -39,7 +40,8 @@ export class AddNewCardComponent {
     private router: Router,
     private $localStorage: LocalStorageService,
     private $sessionStorage: SessionStorageService,
-    private accountSrv: AccountService
+    private accountSrv: AccountService,
+    private authSrv: AuthJWTService
   ) {}
 
   ngOnInit(): void {
@@ -58,6 +60,7 @@ export class AddNewCardComponent {
     const formValue = this.addNewCardForm.value;
     this.paymentSrv.createPayment(formValue, this.token).subscribe(() => {
       this.addNewCardForm.reset();
+      this.authSrv.logout().subscribe();
       this.router.navigate(['/personal-info/my-wallet']);
     });
   }

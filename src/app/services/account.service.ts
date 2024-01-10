@@ -30,6 +30,14 @@ export class AccountService {
     return this.http.post(`${this.baseUrl}/users`, user);
   }
 
+  updateUser(user: any, id: string | undefined): Observable<any> {
+    return this.http.patch(`${this.baseUrl}/users/${id}`, user);
+  }
+
+  findUserByEmail(email: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/users/reset-password`, email);
+  }
+
   getUserIdentity(): IUser | null {
     return this.userIdentity;
   }
@@ -37,7 +45,7 @@ export class AccountService {
   fetch(): Observable<IUser> {
     const token = this._localStorage.retrieve('authToken');
 
-    return this.http.get<IUser>(`http://localhost:3000/auth/me`, {
+    return this.http.get<IUser>(`${this.baseUrl}/auth/me`, {
       headers: { Authorization: 'Bearer ' + token },
     });
   }

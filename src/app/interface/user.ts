@@ -1,12 +1,28 @@
 export interface IUser {
-  username: string;
-  password: string;
-  fullName: string;
+  _id?: string;
+  username?: string;
+  password?: string;
+  fullName?: string;
   avatarUrl?: string;
-  addresses?: object[];
+  phoneNumber?: string;
+  addresses?: [
+    {
+      address_details: string;
+      name: string;
+      phoneNumber: string;
+      userId: string;
+    }
+  ];
   favourites?: object[];
   payments?: object[];
-  carts?: object[];
+  carts?: [
+    {
+      _id: string;
+      userId: string;
+      productId: string;
+      quantity: number;
+    }
+  ];
   cash?: number;
   createdAt?: string;
   updatedAt?: string;

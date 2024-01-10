@@ -69,10 +69,11 @@ const COMPONENTS: any[] = [
   CartItemComponent,
   CartListComponent,
   FavouriteListComponent,
+  PaymentComponent,
 ];
 
 @NgModule({
-  declarations: [...COMPONENTS, PaymentComponent],
+  declarations: [...COMPONENTS],
   imports: [
     CommonModule,
     NzBreadCrumbModule,

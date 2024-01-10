@@ -11,8 +11,7 @@
         </a>
         Personal info
       </h2>
-
-      <form action="./profile.html" class="form form-card">
+      <form class="form form-card" [formGroup]="personForm">
         <!-- Form row 1 -->
         <div class="form__row">
           <div class="form__group">
@@ -22,9 +21,9 @@
             <div class="form__text-input">
               <input
                 type="text"
-                name=""
                 id="full-name"
                 placeholder="Full name"
+                formControlName="fullName"
                 class="form__input"
                 required
                 autofocus
@@ -44,9 +43,10 @@
             <div class="form__text-input">
               <input
                 type="text"
-                name=""
                 id="email-adress"
                 placeholder="Email address"
+                formControlName="username"
+                [disabled]="true"
                 class="form__input"
                 required
               />
@@ -69,9 +69,9 @@
             <div class="form__text-input">
               <input
                 type="text"
-                name=""
                 id="phone-number"
                 placeholder="Phone Number"
+                formControlName="phoneNumber"
                 class="form__input"
                 required
               />
@@ -90,9 +90,9 @@
             <div class="form__text-input">
               <input
                 type="password"
-                name=""
                 id="passowrd"
                 placeholder="Password"
+                formControlName="password"
                 class="form__input"
                 required
               />
@@ -106,9 +106,20 @@
           </div>
         </div>
 
+        <div class="form__row">
+          <div class="form__group">
+            <span style="color: red"
+              ><span>* Lưu ý:</span> Sau khi thay đổi, bạn sẽ phải đăng nhập
+              lại.</span
+            >
+          </div>
+        </div>
+
         <div class="form-card__bottom">
           <a class="btn btn--text" [routerLink]="['/personal-info']">Cancel</a>
-          <button class="btn btn--primary btn--rounded">Save</button>
+          <button class="btn btn--primary btn--rounded" (click)="submitForm()">
+            Save
+          </button>
         </div>
       </form>
     </div>

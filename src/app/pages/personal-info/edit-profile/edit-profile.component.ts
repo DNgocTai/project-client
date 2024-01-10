@@ -1,23 +1,40 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { IUser } from '../../../interface/user';
 import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 import { AccountService } from '../../../services/account.service';
+import {
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { NotificationService } from '../../../services/notification.service';
 
 @Component({
   selector: 'app-edit-profile',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule, FormsModule, ReactiveFormsModule],
   templateUrl: './edit-profile.component.html',
   styleUrl: './edit-profile.component.scss',
 })
 export class EditProfileComponent {
-  userLoggedIn: IUser | undefined;
+  userLoggedIn!: IUser;
+  personForm: FormGroup = this.fb.group({
+    fullName: [null, [Validators.required]],
+    username: [null, [Validators.required]],
+    phoneNumber: [null, [Validators.required]],
+    password: [null, [Validators.required]],
+  });
 
   constructor(
+    private fb: FormBuilder,
     private $localStorage: LocalStorageService,
     private $sessionStorage: SessionStorageService,
-    private accountSrv: AccountService
+    private accountSrv: AccountService,
+    private notify: NotificationService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -28,7 +45,29 @@ export class EditProfileComponent {
     if (token) {
       this.accountSrv.fetch().subscribe((res: any) => {
         this.userLoggedIn = res.data;
+        this.loadInfo();
       });
     }
+  }
+
+  loadInfo() {
+    this.personForm.controls['username'].disable();
+    this.personForm.patchValue({
+      fullName: this.userLoggedIn?.fullName,
+      username: this.userLoggedIn?.username,
+      phoneNumber: this.userLoggedIn?.phoneNumber,
+      password: this.userLoggedIn?.password,
+    });
+  }
+
+  submitForm() {
+    const formValue = this.personForm.value;
+
+    this.accountSrv
+      .updateUser(formValue, this.userLoggedIn?._id)
+      .subscribe(() => {
+        this.notify.createNotification('success', 'Cập nhật thành công', '');
+        this.router.navigate(['/sign-in']);
+      });
   }
 }

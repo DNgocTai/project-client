@@ -2,12 +2,12 @@
   <article class="cart-preview-item">
     <div class="cart-preview-item__img-wrap">
       <img
-        src="../../../assets/images/products/qualità-oro-mountain-grown-espresso- coffee-beans.png"
-        alt=""
+        [src]="prod?.avatarUrl"
+        [alt]="prod?.categoryName"
         class="cart-preview-item__thumb"
       />
     </div>
-    <h3 class="cart-preview-item__title">Qualità Oro Mountain</h3>
-    <p class="cart-preview-item__price">$47.00</p>
+    <h3 class="cart-preview-item__title">{{ prod?.name }}</h3>
+    <p class="cart-preview-item__price">{{ prod?.price | currency : "VND" }}</p>
   </article>
 </div>

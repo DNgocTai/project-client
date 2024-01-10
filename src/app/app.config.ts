@@ -29,7 +29,7 @@ export const appConfig: ApplicationConfig = {
     provideAnimations(),
     provideHttpClient(withFetch()),
     importProvidersFrom(
-      NgxWebstorageModule.forRoot({ prefix: 'login', separator: '-' })
+      NgxWebstorageModule.forRoot({ prefix: 'app', separator: '-' })
     ),
   ],
 };

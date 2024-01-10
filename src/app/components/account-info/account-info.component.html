@@ -16,7 +16,7 @@
         </div>
         <div>
           <h3 class="account-info__title">Email Address</h3>
-          <p class="account-info__desc">tarek97.ta&#64;gmail.com</p>
+          <p class="account-info__desc">{{ user?.username }}</p>
         </div>
       </article>
     </a>
@@ -35,7 +35,7 @@
         </div>
         <div>
           <h3 class="account-info__title">Phone number</h3>
-          <p class="account-info__desc">+000 11122 2345 657</p>
+          <p class="account-info__desc">{{ user?.phoneNumber }}</p>
         </div>
       </article>
     </a>
@@ -53,9 +53,9 @@
           />
         </div>
         <div>
-          <h3 class="account-info__title">Add an address</h3>
+          <h3 class="account-info__title">Role</h3>
           <p class="account-info__desc">
-            Bangladesh Embassy, Washington, DC 20008
+            {{ user?.role }}
           </p>
         </div>
       </article>
