@@ -2067,7 +2067,7 @@ html {
   margin-top: 50px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 }
 @media (max-width: 767.98px) {
   .footer__bottom {
@@ -3138,9 +3138,15 @@ html {
   font-weight: 500;
   text-align: left;
 }
+
 .message--success {
   border: 1px solid #5bc45f;
   background: rgba(39, 243, 117, 0.2);
+}
+
+.message--error {
+  border: 1px solid #c45b5b;
+  background: rgba(243, 39, 39, 0.2);
 }
 
 .breadcrumbs {

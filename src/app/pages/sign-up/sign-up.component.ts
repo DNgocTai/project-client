@@ -10,9 +10,9 @@ import {
 import { Title } from '@angular/platform-browser';
 import { Router, RouterModule } from '@angular/router';
 import { AuthJWTService } from '../../services/auth-jwt.service';
-import { NotificationService } from '../../services/notification.service';
 
 import { NzSpinModule } from 'ng-zorro-antd/spin';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-sign-up',
@@ -32,7 +32,8 @@ export class SignUpComponent {
   isSpinning: boolean = false;
 
   signupForm: FormGroup = this.fb.group({
-    fullName: [null],
+    fullName: [null, [Validators.required]],
+    phoneNumber: [null, [Validators.required]],
     username: [null, [Validators.required]],
     password: [null, [Validators.required]],
     confirmPassword: [null, [Validators.required]],
@@ -42,10 +43,10 @@ export class SignUpComponent {
     private titleService: Title,
     private fb: FormBuilder,
     private authSrv: AuthJWTService,
-    private notify: NotificationService,
+    private message: NzMessageService,
     private router: Router
   ) {
-    this.titleService.setTitle('Sign Up | Grocery Mart');
+    this.titleService.setTitle('Đăng ký | Grocery Coffee');
   }
 
   signUp() {
@@ -60,11 +61,8 @@ export class SignUpComponent {
     ) {
       this.isSpinning = true;
       setTimeout(() => {
-        this.notify.createNotification(
-          'error',
-          'Sign Up Failed',
-          'Password is not match'
-        );
+        this.isSpinning = false;
+        this.message.error('Đăng ký thất bại! Mật khẩu không khớp.');
       }, 1000);
       return;
     }
@@ -73,6 +71,7 @@ export class SignUpComponent {
       fullName: formValue.fullName,
       username: formValue.username,
       password: formValue.password,
+      phoneNumber: formValue.phoneNumber,
     };
 
     this.authSrv.signUp(payload).subscribe(() => {
@@ -80,7 +79,7 @@ export class SignUpComponent {
       setTimeout(() => {
         this.isSpinning = false;
         this.router.navigate(['/sign-in']);
-        this.notify.createNotification('success', 'Đăng ký thành công', '');
+        this.message.success('Đăng ký thành công');
       }, 1000);
     });
   }

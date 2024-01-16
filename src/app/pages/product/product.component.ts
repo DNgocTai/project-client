@@ -19,7 +19,7 @@ export class ProductComponent implements OnInit {
     private readonly productService: ProductsService,
     private titleService: Title
   ) {
-    this.titleService.setTitle('Product | Grocery Mart');
+    this.titleService.setTitle('Chi tiết sản phẩm | Grocery Coffee');
   }
 
   ngOnInit(): void {

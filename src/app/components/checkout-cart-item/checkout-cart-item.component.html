@@ -1,24 +1,21 @@
 <article class="cart-item">
-  <a href="./product-detail.html">
-    <img
-      src="../../../assets/images/products/espresso-arabica-and-robusta-beans.png"
-      alt=""
-      class="cart-item__thumb"
-    />
+  <a [routerLink]="['/product', prod?._id]">
+    <img [src]="prod.avatarUrl" alt="" class="cart-item__thumb" />
   </a>
   <div class="cart-item__content">
     <div class="cart-item__content-left">
       <h3 class="cart-item__title">
-        <a href="./product-detail.html">
-          Coffee Beans - Espresso Arabica and Robusta Beans
+        <a [routerLink]="['/product', prod?._id]">
+          {{ prod?.name }}
         </a>
       </h3>
       <p class="cart-item__price-wrap">
-        $47.00 | <span class="cart-item__status">In Stock</span>
+        {{ prod?.price | currency : " " : "symbol" : "1.0-0" }}đ |
+        <span class="cart-item__status">Còn hàng</span>
       </p>
       <div class="cart-item__ctrl cart-item__ctrl--md-block">
         <div class="cart-item__input">
-          LavAzza
+          {{ prod?.categoryName }}
           <!-- <img
               class="icon"
               src="./assets/icons/arrow-down-2.svg"
@@ -26,15 +23,18 @@
             /> -->
         </div>
         <div class="cart-item__input">
-          <button class="cart-item__input-btn">
+          <button
+            class="cart-item__input-btn"
+            (click)="minusQuantity(prod?._id)"
+          >
             <img
               class="icon"
               src="../../../assets/images/other/minus.png"
               alt=""
             />
           </button>
-          <span>1</span>
-          <button class="cart-item__input-btn">
+          <span>{{ prod?.quantity }}</span>
+          <button class="cart-item__input-btn" (click)="addQuantity(prod?._id)">
             <img
               class="icon"
               src="../../../assets/images/other/plus.png"
@@ -45,11 +45,13 @@
       </div>
     </div>
     <div class="cart-item__content-right">
-      <p class="cart-item__total-price">$47.00</p>
+      <p class="cart-item__total-price">
+        {{ prod?.totalAmount | currency : " " : "symbol" : "1.0-0" }}đ
+      </p>
       <div class="cart-item__ctrl">
         <button class="cart-item__ctrl-btn">
           <img src="../../../assets/images/icon/heart-2.svg" alt="" />
-          Save
+          Yêu thích
         </button>
         <button
           class="cart-item__ctrl-btn js-toggle"
@@ -57,7 +59,7 @@
           (click)="openModal = !openModal"
         >
           <img src="../../../assets/images/icon/trash.svg" alt="" />
-          Delete
+          Xóa
         </button>
       </div>
     </div>
@@ -70,23 +72,21 @@
   [class]="openModal ? 'modal modal--small show' : 'modal modal--small hide'"
 >
   <div class="modal__content">
-    <p class="modal__text">
-      Do you want to remove this item from shopping cart?
-    </p>
+    <p class="modal__text">Bạn có muốn xóa mặt hàng này khỏi giỏ hàng không?</p>
     <div class="modal__bottom">
       <button
         class="btn btn--small btn--outline modal__btn js-toggle"
         toggle-target="#delete-confirm"
         (click)="openModal = !openModal"
       >
-        Cancel
+        Hủy
       </button>
       <button
         class="btn btn--small btn--danger btn--primary modal__btn btn--no-margin js-toggle"
         toggle-target="#delete-confirm"
-        (click)="openModal = !openModal"
+        (click)="deleteCart(prod?._id)"
       >
-        Delete
+        Xóa
       </button>
     </div>
   </div>

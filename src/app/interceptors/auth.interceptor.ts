@@ -23,15 +23,6 @@ export class AuthInterceptor implements HttpInterceptor {
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    if (
-      !request ||
-      !request.url ||
-      (request.url.startsWith('http') &&
-        !(this.SERVER_API_URL && request.url.startsWith(this.SERVER_API_URL)))
-    ) {
-      return next.handle(request);
-    }
-
     const token: string | null =
       this.localStorage.retrieve('authToken') ??
       this.sessionStorage.retrieve('authToken');

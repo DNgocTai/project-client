@@ -3,7 +3,9 @@
     <div class="product-card__img-wrap">
       <a [routerLink]="['/product', product._id]">
         <img
-          [src]="product.avatarUrl"
+          [src]="
+            product.avatarUrl || '../../../assets/images/products/unknown.png'
+          "
           alt="product"
           class="product-card__thumb"
         />
@@ -22,11 +24,13 @@
       </button>
     </div>
     <h3 class="product-card__title">
-      <a href="./product-detail.html">{{ product.name }}</a>
+      <a [routerLink]="['/product', product._id]">{{ product.name }}</a>
     </h3>
     <p class="product-card__brand">{{ product.categoryName }}</p>
     <div class="product-card__row">
-      <span class="product-card__price">{{ product.price | currency }}</span>
+      <span class="product-card__price"
+        >{{ product.price | currency : " " : "symbol" : "1.0-0" }}đ</span
+      >
       <img
         src="../../../assets/images/icon/star.svg"
         alt=""

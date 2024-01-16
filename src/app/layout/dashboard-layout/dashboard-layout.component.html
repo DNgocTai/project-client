@@ -5,51 +5,43 @@
       class="logo d-flex justify-content-between align-items-center"
     >
       <img src="../../../assets/images/logo/logo.png" alt="Logo" />
-      <span>grocerymart</span>
+      <span>grocerycoffee</span>
     </a>
     <ul nz-menu nzTheme="dark" nzMode="inline">
-      <li nz-menu-item nzSelected="true">
-        <span nz-icon nzType="dashboard" nzTheme="outline"></span>
-        <span>Dashboard</span>
+      <li nz-menu-item nzSelected="true" [routerLink]="['/admin']">
+        <span nz-icon nzType="shopping-cart" nzTheme="outline"></span>
+        <span>Đơn hàng</span>
       </li>
-      <li nz-menu-item>
-        <span nz-icon nzType="home" nzTheme="outline"></span>
-        <span>Back to home</span>
+      <li nz-menu-item [routerLink]="['/manage-user']">
+        <span nz-icon nzType="user" nzTheme="outline"></span>
+        <span>Người dùng</span>
       </li>
-      <li nz-submenu nzTitle="Users" nzIcon="user">
+      <li nz-submenu nzTitle="Điều khiển" nzIcon="control">
         <ul>
-          <li nz-menu-item>All Users</li>
-          <li nz-menu-item>Add User</li>
-        </ul>
-      </li>
-      <li nz-submenu nzSelected="true" nzTitle="Controls" nzIcon="control">
-        <ul>
-          <li nz-menu-item>
-            <span>All Category</span>
+          <li nz-menu-item [routerLink]="['/manage-category']">
+            <span>Tất cả danh mục</span>
           </li>
-          <li nz-menu-item>
-            <span>All Product</span>
+          <li nz-menu-item [routerLink]="['/manage-product']">
+            <span>Tất cả sản phẩm</span>
           </li>
         </ul>
       </li>
-      <li nz-menu-item>
+      <li nz-menu-item [routerLink]="['/sign-in']" (click)="logout()">
         <span nz-icon nzType="poweroff" nzTheme="outline"></span>
-        <span>Logout</span>
+        <span>Đăng xuất</span>
       </li>
     </ul>
   </nz-sider>
   <nz-layout>
     <nz-header>
-      <nz-avatar nzIcon="user"></nz-avatar>
-      <nz-badge nzSize="small" nzDot>
-        <span nz-icon nzType="bell" nzTheme="outline"></span>
-      </nz-badge>
+      <nz-page-header class="site-page-header" nzTitle="Chào mừng, Admin">
+        ></nz-page-header
+      >
     </nz-header>
     <nz-content>
       <div class="inner-content">
         <router-outlet></router-outlet>
       </div>
     </nz-content>
-    <nz-footer>Ant Design ©2020 Implement By Angular</nz-footer>
   </nz-layout>
 </nz-layout>

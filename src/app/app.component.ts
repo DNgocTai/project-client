@@ -1,11 +1,10 @@
-import { Component, importProvidersFrom } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
-import { TopBarSecondComponent } from './components/top-bar-second/top-bar-second.component';
 import { ComponentsModule } from './components/components.module';
 import { PagesModule } from './pages/pages.module';
-import { NgxWebstorageModule } from 'ngx-webstorage';
+import { httpInterceptorProviders } from './interceptors';
 
 @Component({
   selector: 'app-root',
@@ -17,11 +16,11 @@ import { NgxWebstorageModule } from 'ngx-webstorage';
     RouterOutlet,
     NzTabsModule,
     ComponentsModule,
-    TopBarSecondComponent,
     RouterLink,
     PagesModule,
     RouterModule,
   ],
+  providers: [...httpInterceptorProviders],
 })
 export class AppComponent {
   title = 'grocery-coffee';

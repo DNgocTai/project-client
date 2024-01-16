@@ -8,6 +8,7 @@ import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { CreateNewPasswordComponent } from './pages/create-new-password/create-new-password.component';
 import { ErrorPageComponent } from './pages/error-page/error-page.component';
+import { AdminSignInComponent } from './pages/admin-sign-in/admin-sign-in.component';
 
 export const routes: Routes = [
   {
@@ -23,6 +24,10 @@ export const routes: Routes = [
   {
     path: 'sign-in',
     component: SignInComponent,
+  },
+  {
+    path: 'admin-signin',
+    component: AdminSignInComponent,
   },
   {
     path: 'sign-up',

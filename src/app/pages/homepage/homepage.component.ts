@@ -5,6 +5,7 @@ import { Router, RouterModule } from '@angular/router';
 import { ComponentsModule } from '../../components/components.module';
 import { CommonModule } from '@angular/common';
 import { filter } from 'rxjs';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-homepage',
@@ -19,8 +20,11 @@ export class HomepageComponent {
 
   constructor(
     private categoriesService: CategoriesService,
-    private readonly router: Router
-  ) {}
+    private readonly router: Router,
+    private titleSrv: Title
+  ) {
+    this.titleSrv.setTitle('Trang Chủ | Grocery Coffee');
+  }
 
   ngOnInit() {
     this.categoriesService.getCategories().subscribe((res: any) => {
@@ -34,6 +38,6 @@ export class HomepageComponent {
 
   handleTabAndNavigateProducts(idx: number, path: string) {
     this.tabActive = idx;
-    this.router.navigate(['homepage/' + path.toLowerCase()]);
+    this.router.navigate([`homepage/${path}`]);
   }
 }

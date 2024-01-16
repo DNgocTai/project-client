@@ -1,7 +1,15 @@
 export interface ICart {
   userId: string;
-  productId: string;
-  products: [{}];
-  quantity?: number;
-  total: number;
+  products: [
+    {
+      name?: string;
+      avatarUrl?: string;
+      description?: string;
+      price?: string;
+      star?: string;
+      status?: boolean;
+      quantity?: number;
+      totalAmount?: number;
+    }
+  ];
 }

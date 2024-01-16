@@ -4,6 +4,7 @@ import { Observable, map } from 'rxjs';
 import { IUser } from '../interface/user';
 import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 import { AccountService } from './account.service';
+import { CartService } from './cart.service';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,8 @@ export class AuthJWTService {
     private http: HttpClient,
     private _localStorage: LocalStorageService,
     private $sessionStorage: SessionStorageService,
-    private accountSrv: AccountService
+    private accountSrv: AccountService,
+    private cartSrv: CartService
   ) {}
 
   baseUrl = 'http://localhost:3000';
@@ -28,6 +30,8 @@ export class AuthJWTService {
     return new Observable((observer) => {
       this._localStorage.clear('authToken');
       this.$sessionStorage.clear('authToken');
+      this.cartSrv.clearAllCart();
+      this._localStorage.clear('role');
       observer.complete();
     });
   }

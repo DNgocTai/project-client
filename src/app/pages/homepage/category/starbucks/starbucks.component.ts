@@ -18,7 +18,7 @@ export class StarbucksComponent implements OnInit {
   ngOnInit() {
     this.productsSrv.getProducts().subscribe((res: any) => {
       this.products = res.data.filter(
-        (prd: any) => prd.categoryName === 'Starbucks'
+        (prd: any) => prd.categoryName === 'Trung Nguyên' && prd.status === true
       );
     });
   }

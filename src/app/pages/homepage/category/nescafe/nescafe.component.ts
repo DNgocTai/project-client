@@ -12,13 +12,14 @@ import { ProductsService } from '../../../../services/products.service';
 })
 export class NescafeComponent implements OnInit {
   products: any[] = [];
+  categoryName: string = 'Nescafe';
 
   constructor(private productsService: ProductsService) {}
 
   ngOnInit(): void {
     this.productsService.getProducts().subscribe((res: any) => {
       this.products = res.data.filter(
-        (prd: any) => prd.categoryName === 'Nescafe'
+        (prd: any) => prd.categoryName === 'Nescafe' && prd.status === true
       );
     });
   }

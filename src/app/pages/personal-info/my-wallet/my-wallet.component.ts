@@ -4,6 +4,7 @@ import { ComponentsModule } from '../../../components/components.module';
 import { IUser } from '../../../interface/user';
 import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 import { AccountService } from '../../../services/account.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-my-wallet',
@@ -18,8 +19,11 @@ export class MyWalletComponent {
   constructor(
     private $localStorage: LocalStorageService,
     private $sessionStorage: SessionStorageService,
-    private accountSrv: AccountService
-  ) {}
+    private accountSrv: AccountService,
+    private titleSrv: Title
+  ) {
+    this.titleSrv.setTitle('Hồ sơ | Grocery Coffee');
+  }
 
   ngOnInit(): void {
     const token: string | null =

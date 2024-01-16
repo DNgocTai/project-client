@@ -10,9 +10,9 @@ import { Router, RouterModule } from '@angular/router';
 import { AuthJWTService } from '../../services/auth-jwt.service';
 import { AccountService } from '../../services/account.service';
 import { mergeMap } from 'rxjs';
-import { NotificationService } from '../../services/notification.service';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
-import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { LocalStorageService } from 'ngx-webstorage';
 
 @Component({
   selector: 'app-sign-in',
@@ -31,12 +31,10 @@ export class SignInComponent implements OnInit {
     private authJWTSrv: AuthJWTService,
     private accountService: AccountService,
     private router: Router,
-    private notificationSrv: NotificationService,
-
-    private localStorageService: LocalStorageService,
-    private sessionStorageService: SessionStorageService
+    private message: NzMessageService,
+    private localStorage: LocalStorageService
   ) {
-    this.titleService.setTitle('Sign In | Grocery Mart');
+    this.titleService.setTitle('Đăng nhập | Grocery Coffee');
 
     this.loginForm = this.fb.group({
       username: [''],
@@ -44,9 +42,9 @@ export class SignInComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  public ngOnInit() {}
 
-  onLogin() {
+  async onLogin() {
     const data = this.loginForm.value;
     this.authJWTSrv
       .login(data)
@@ -57,11 +55,6 @@ export class SignInComponent implements OnInit {
           setTimeout(() => {
             this.isSpinning = false;
             this.router.navigate(['/homepage']);
-            this.notificationSrv.createNotification(
-              'success',
-              'Đăng nhập thành công',
-              ''
-            );
           }, 1000);
         },
         () => {
@@ -69,10 +62,8 @@ export class SignInComponent implements OnInit {
           setTimeout(() => {
             this.isSpinning = false;
             this.loginForm.reset();
-            this.notificationSrv.createNotification(
-              'error',
-              'Đăng nhập thất bại!',
-              'Tài khoản hoặc mật khẩu không chính xác.'
+            this.message.error(
+              'Đăng nhập thất bại! Tài khoản hoặc mật khẩu không chính xác'
             );
           }, 1000);
         }

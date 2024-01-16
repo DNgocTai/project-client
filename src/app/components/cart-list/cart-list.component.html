@@ -5,16 +5,16 @@
     class="act-dropdown__arrow"
   />
   <div class="act-dropdown__top">
-    <h2 class="act-dropdown__title">You have {{ cart.length }} item(s)</h2>
-    <a class="act-dropdown__view-all" [routerLink]="['checkout']">See All</a>
+    <h2 class="act-dropdown__title">Bạn có {{ cart?.length || 0 }} sản phẩm</h2>
+    <a class="act-dropdown__view-all" [routerLink]="['checkout']">Xem tất cả</a>
   </div>
   <div class="row row-cols-3 gx-2 act-dropdown__list">
     <app-cart-item *ngFor="let item of cart" [prod]="item"></app-cart-item>
   </div>
-  <div class="act-dropdown__bottom">
+  <!-- <div class="act-dropdown__bottom">
     <div class="act-dropdown__row">
       <span class="act-dropdown__label">Subtotal</span>
-      <span class="act-dropdown__value">{{ subTotal }}</span>
+      <span class="act-dropdown__value">{{ subTotal| currency : " " : "symbol" : "1.0-0" }}đ</span>
     </div>
     <div class="act-dropdown__row">
       <span class="act-dropdown__label">Texes</span>
@@ -26,16 +26,16 @@
     </div>
     <div class="act-dropdown__row act-dropdown__row--bold">
       <span class="act-dropdown__label">Total Price</span>
-      <span class="act-dropdown__value">$425.99</span>
+      <span class="act-dropdown__value">{{ subTotal | currency : " " : "symbol" : "1.0-0" }}đ</span>
     </div>
-  </div>
+  </div> -->
   <div class="act-dropdown__checkout">
     <a
-      href="./checkout.html"
+      style="width: 100%"
       class="btn btn--primary btn--rounded act-dropdown__checkout-btn"
       [routerLink]="['checkout']"
     >
-      Check Out All
+      Đặt hàng
     </a>
   </div>
 </div>

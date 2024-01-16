@@ -1,0 +1,45 @@
+<!-- Order info 1 -->
+<div class="col">
+  <div>
+    <article class="account-info">
+      <div class="account-info__icon">
+        <img
+          width="80%"
+          src="../../../assets/images/icon/cod.png"
+          alt="cod"
+          class="icon"
+        />
+      </div>
+      <div
+        class="d-flex align-items-center justify-content-around gap-30 flex-1"
+      >
+        <div>
+          <h3 class="account-info__title">Số điện thoại</h3>
+          <p class="account-info__desc">
+            {{ phone }}
+          </p>
+        </div>
+        <div>
+          <h3 class="account-info__title">Địa chỉ</h3>
+          <p class="account-info__desc">{{ adr }}</p>
+        </div>
+        <div>
+          <h3 class="account-info__title">Ngày đặt hàng</h3>
+          <p class="account-info__desc">
+            {{ createdAt | date : "dd/MM/yy" }}
+          </p>
+        </div>
+        <div>
+          <h3 class="account-info__title">Số lượng</h3>
+          <p class="account-info__desc">{{ qty }}</p>
+        </div>
+        <div>
+          <h3 class="account-info__title">Tổng</h3>
+          <p class="account-info__desc">
+            {{ total | currency : " " : "symbol" : "1.0-0" }}đ
+          </p>
+        </div>
+      </div>
+    </article>
+  </div>
+</div>

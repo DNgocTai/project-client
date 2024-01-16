@@ -9,14 +9,14 @@
             class="icon cart-info__back-arrow"
           />
         </a>
-        Personal info
+        Thông tin cá nhân
       </h2>
       <form class="form form-card" [formGroup]="personForm">
         <!-- Form row 1 -->
         <div class="form__row">
           <div class="form__group">
             <label for="full-name" class="form__label form-card__label">
-              Full name
+              Họ và tên
             </label>
             <div class="form__text-input">
               <input
@@ -34,11 +34,11 @@
                 class="form__input-icon-error"
               />
             </div>
-            <p class="form__error">Please enter your full name</p>
+            <p class="form__error">Hãy điền họ và tên của bạn</p>
           </div>
           <div class="form__group">
             <label for="email-adress" class="form__label form-card__label">
-              Email address
+              Địa chỉ Email
             </label>
             <div class="form__text-input">
               <input
@@ -56,7 +56,7 @@
                 class="form__input-icon-error"
               />
             </div>
-            <p class="form__error">Please enter a valid email address</p>
+            <p class="form__error">Hãy điền địa chỉ email hợp lệ</p>
           </div>
         </div>
 
@@ -64,13 +64,13 @@
         <div class="form__row">
           <div class="form__group">
             <label for="phone-number" class="form__label form-card__label">
-              Phone Number
+              Số điện thoại
             </label>
             <div class="form__text-input">
               <input
                 type="text"
                 id="phone-number"
-                placeholder="Phone Number"
+                placeholder="Số điện thoại"
                 formControlName="phoneNumber"
                 class="form__input"
                 required
@@ -81,17 +81,17 @@
                 class="form__input-icon-error"
               />
             </div>
-            <p class="form__error">Please enter a valid phone number</p>
+            <p class="form__error">Hãy điền số điện thoại hợp lệ</p>
           </div>
           <div class="form__group">
             <label for="passowrd" class="form__label form-card__label">
-              Password
+              Mật khẩu
             </label>
             <div class="form__text-input">
               <input
                 type="password"
                 id="passowrd"
-                placeholder="Password"
+                placeholder="Mật khẩu"
                 formControlName="password"
                 class="form__input"
                 required
@@ -102,7 +102,7 @@
                 class="form__input-icon-error"
               />
             </div>
-            <p class="form__error">Please enter new password</p>
+            <p class="form__error">Hãy nhập mật khẩu mới</p>
           </div>
         </div>
 
@@ -116,9 +116,9 @@
         </div>
 
         <div class="form-card__bottom">
-          <a class="btn btn--text" [routerLink]="['/personal-info']">Cancel</a>
+          <a class="btn btn--text" [routerLink]="['/personal-info']">Hủy</a>
           <button class="btn btn--primary btn--rounded" (click)="submitForm()">
-            Save
+            Lưu
           </button>
         </div>
       </form>

@@ -11,13 +11,13 @@
       </label>
     </div>
     <div class="address-card__info">
-      <h3 class="address-card__title">Imran Khan</h3>
+      <h3 class="address-card__title">{{ address.name }}</h3>
       <p class="address-card__desc">
-        Museum of Rajas, Sylhet Sadar, Sylhet 3100.
+        {{ address.address_details }}
       </p>
       <ul class="address-card__list">
-        <li class="address-card__list-item">Shipping</li>
-        <li class="address-card__list-item">Delivery from store</li>
+        <li class="address-card__list-item">Vận chuyển</li>
+        <li class="address-card__list-item">Giao hàng từ của hàng</li>
       </ul>
     </div>
   </div>
@@ -26,10 +26,10 @@
       <button
         class="cart-info__edit-btn js-toggle"
         toggle-target="#add-new-address"
-        (click)="openModalEdit = !openModalEdit"
+        (click)="openEdit(address._id)"
       >
         <img class="icon" src="../../../assets/images/icon/edit.svg" alt="" />
-        Edit
+        Chỉnh sửa
       </button>
     </div>
   </div>
@@ -42,20 +42,21 @@
   style="--content-width: 650px"
 >
   <div class="modal__content">
-    <form action="" class="form">
-      <h2 class="modal__heading">Add new shipping address</h2>
+    <form [formGroup]="addressForm" class="form">
+      <h2 class="modal__heading">Thêm mới địa chỉ giao hàng</h2>
       <div class="modal__body">
         <div class="form__row">
           <div class="form__group">
             <label for="name" class="form__label form__label--small"
-              >Name</label
-            >
+              >Tên
+            </label>
             <div class="form__text-input form__text-input--small">
               <input
                 type="text"
                 name="name"
                 id="name"
-                placeholder="Name"
+                formControlName="name"
+                placeholder="Tên"
                 class="form__input"
                 required
                 minlength="2"
@@ -66,18 +67,19 @@
                 class="form__input-icon-error"
               />
             </div>
-            <p class="form__error">Name must be at least 2 characters</p>
+            <p class="form__error">Tên phải có ít nhất 2 kí tự</p>
           </div>
           <div class="form__group">
             <label for="phone" class="form__label form__label--small"
-              >Phone</label
+              >Số điện thoại</label
             >
             <div class="form__text-input form__text-input--small">
               <input
                 type="tel"
                 name="phone"
                 id="phone"
-                placeholder="Phone"
+                placeholder="Số điện thoại"
+                formControlName="phoneNumber"
                 class="form__input"
                 required
                 minlength="10"
@@ -88,18 +90,19 @@
                 class="form__input-icon-error"
               />
             </div>
-            <p class="form__error">Phone must be at least 10 characters</p>
+            <p class="form__error">Số điện thoại phải có ít nhất 10 kí tự</p>
           </div>
         </div>
         <div class="form__group">
           <label for="address" class="form__label form__label--small"
-            >Address</label
+            >Địa chỉ</label
           >
           <div class="form__text-area">
             <textarea
               name="address"
               id="address"
-              placeholder="Address (Area and street)"
+              formControlName="address_details"
+              placeholder="Địa chỉ cụ thể"
               class="form__text-area-input"
               required
             ></textarea>
@@ -109,39 +112,7 @@
               class="form__input-icon-error"
             />
           </div>
-          <p class="form__error">Address not empty</p>
-        </div>
-        <div class="form__group">
-          <label for="city" class="form__label form__label--small"
-            >City/District/Town</label
-          >
-          <div class="form__text-input form__text-input--small">
-            <select class="form__input">
-              <option class="form__option" selected value="hcm">
-                Binh Duong
-              </option>
-              <option class="form__option" value="hcm">Ho Chi Minh</option>
-              <option class="form__option" value="dn">Da Nang</option>
-              <option class="form__option" value="hn">Ha Noi</option>
-            </select>
-            <img
-              src="../../../assets/images/icon/form_error.svg"
-              alt=""
-              class="form__input-icon-error"
-            />
-          </div>
-          <p class="form__error">Phone must be at least 11 characters</p>
-        </div>
-        <div class="form__group form__group--inline">
-          <label class="form__checkbox">
-            <input
-              type="checkbox"
-              name=""
-              id=""
-              class="form__checkbox-input d-none"
-            />
-            <span class="form__checkbox-label">Set as default address</span>
-          </label>
+          <p class="form__error">Địa chỉ không được để trống</p>
         </div>
       </div>
       <div class="modal__bottom">
@@ -150,14 +121,15 @@
           toggle-target="#add-new-address"
           (click)="openModalEdit = !openModalEdit"
         >
-          Cancel
+          Hủy
         </button>
         <button
           class="btn btn--small btn--primary modal__btn btn--no-margin js-toggle"
           toggle-target="#add-new-address"
-          (click)="openModalEdit = !openModalEdit"
+          (click)="submitFormAddress(address._id)"
+          type="submit"
         >
-          Create
+          Cập nhật
         </button>
       </div>
     </form>

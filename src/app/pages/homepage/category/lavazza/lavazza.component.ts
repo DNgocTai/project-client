@@ -18,7 +18,7 @@ export class LavazzaComponent implements OnInit {
   ngOnInit(): void {
     this.productsService.getProducts().subscribe((res: any) => {
       this.products = res.data.filter(
-        (prd: any) => prd.categoryName === 'LavAzza'
+        (prd: any) => prd.categoryName === 'LavAzza' && prd.status === true
       );
     });
   }

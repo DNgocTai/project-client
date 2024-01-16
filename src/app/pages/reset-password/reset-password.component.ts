@@ -21,6 +21,9 @@ import { LocalStorageService } from 'ngx-webstorage';
   styleUrl: './reset-password.component.scss',
 })
 export class ResetPasswordComponent {
+  isShow: boolean = false;
+  isSuccess: boolean = false;
+  isError: boolean = false;
   resetForm: FormGroup = this.fb.group({
     username: [null, [Validators.required]],
   });
@@ -33,17 +36,29 @@ export class ResetPasswordComponent {
     private router: Router,
     private localStorage: LocalStorageService
   ) {
-    this.titleService.setTitle('Reset Password | Grocery Mart');
+    this.titleService.setTitle('Đặt lại mật khẩu | Grocery Coffee');
   }
 
   submitForm() {
     const formValue = this.resetForm.value;
     this.accountSrv.findUserByEmail(formValue).subscribe((res) => {
       if (res.data) {
-        this.localStorage.store('resetPassword', res.data._id);
-        this.router.navigate(['/new-password']);
+        this.isShow = true;
+        this.isSuccess = true;
+        this.resetForm.reset();
+        setTimeout(() => {
+          this.isShow = false;
+          this.isSuccess = false;
+          this.localStorage.store('resetPassword', res.data._id);
+          this.router.navigate(['/new-password']);
+        }, 1000);
       } else {
-        this.notify.createNotification('error', 'Email not found', '');
+        this.isShow = true;
+        this.isError = true;
+        setTimeout(() => {
+          this.isShow = false;
+          this.isError = false;
+        }, 2000);
       }
     });
   }

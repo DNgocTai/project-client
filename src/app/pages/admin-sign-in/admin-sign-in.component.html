@@ -1,0 +1,93 @@
+<nz-spin [nzSpinning]="isSpinning" [nzSize]="'large'">
+  <main class="auth">
+    <!-- Auth intro -->
+    <div class="auth__intro d-md-none">
+      <img
+        src="../../../assets/images/auth/intro.svg"
+        alt="Intro"
+        class="auth__intro-img"
+      />
+      <p class="auth__intro-text">
+        Giá trị thương hiệu cao cấp nhất, sản phẩm chất lượng cao và dịch vụ
+        sáng tạo
+      </p>
+    </div>
+
+    <!-- Auth content -->
+    <div class="auth__content">
+      <div class="auth__content-inner">
+        <a href="./" class="logo">
+          <img
+            src="../../../assets/images/logo/logo.png"
+            alt="grocerycoffee"
+            class="logo__img"
+          />
+          <h2 class="logo__title">grocerycoffee</h2>
+        </a>
+        <h1 class="auth__heading">Xin chào, Admin!</h1>
+        <p class="auth__desc">
+          Chào mừng bạn quay lại đăng nhập. Hãy đăng nhập để vào trang quản lý
+        </p>
+        <form class="form auth__form" [formGroup]="loginForm">
+          <div class="form__group">
+            <div class="form__text-input">
+              <input
+                type="email"
+                name="username"
+                formControlName="username"
+                placeholder="Email"
+                class="form__input"
+                autofocus
+                required
+              />
+              <img
+                src="../../../assets/images/icon/message.svg"
+                alt=""
+                class="form__input-icon"
+              />
+              <img
+                src="../../../assets/images/icon/form_error.svg"
+                alt=""
+                class="form__input-icon-error"
+              />
+            </div>
+            <p class="form__error">Email không hợp lệ</p>
+          </div>
+          <div class="form__group">
+            <div class="form__text-input">
+              <input
+                type="password"
+                formControlName="password"
+                name="password"
+                placeholder="Mật khẩu"
+                class="form__input"
+                required
+                minlength="6"
+              />
+              <img
+                src="../../../assets/images/icon/lock.svg"
+                alt=""
+                class="form__input-icon"
+              />
+              <img
+                src="../../../assets/images/icon/form_error.svg"
+                alt=""
+                class="form__input-icon-error"
+              />
+            </div>
+            <p class="form__error">Mật khẩu phải có ít nhất 6 kí tự</p>
+          </div>
+
+          <div class="form__group auth__btn-group">
+            <button
+              class="btn btn--primary auth__btn form__submit-btn"
+              (click)="onLogin()"
+            >
+              Đăng nhập
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+</nz-spin>

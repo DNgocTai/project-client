@@ -9,7 +9,7 @@ import {
   shareReplay,
 } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
+import { LocalStorageService } from 'ngx-webstorage';
 
 @Injectable({
   providedIn: 'root',
@@ -30,8 +30,16 @@ export class AccountService {
     return this.http.post(`${this.baseUrl}/users`, user);
   }
 
+  getUsers(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/users`);
+  }
+
   updateUser(user: any, id: string | undefined): Observable<any> {
     return this.http.patch(`${this.baseUrl}/users/${id}`, user);
+  }
+
+  deleteUser(id: string): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/users/${id}`);
   }
 
   findUserByEmail(email: any): Observable<any> {

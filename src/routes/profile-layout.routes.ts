@@ -27,4 +27,11 @@ export const PROFILE_LAYOUT_ROUTES: Routes = [
         '../app/pages/personal-info/add-new-card/add-new-card.component'
       ).then((c) => c.AddNewCardComponent),
   },
+  {
+    path: 'order',
+    loadComponent: () =>
+      import('../app/pages/personal-info/order/order.component').then(
+        (c) => c.OrderComponent
+      ),
+  },
 ];

@@ -10,7 +10,7 @@
                 srcset="../../../assets/images/bg/background-md.png"
               />
               <img
-                src="../../../assets/images/bg/background.png"
+                src="../../../assets/images/bg/banner-ca-phe.jpg"
                 alt=""
                 class="slideshow__img"
               />
@@ -24,7 +24,7 @@
   <!-- Browse Categories -->
   <section class="home__container">
     <div class="home__row">
-      <h2 class="home__heading">Browse Categories</h2>
+      <h2 class="home__heading">Danh mục sản phẩm</h2>
     </div>
     <div class="home__cate row row-cols-3 row-cols-md-1 gy-2">
       <!-- Category item-->
@@ -33,7 +33,9 @@
         [categoryName]="cat.name"
         [avatarUrl]="cat.avatarUrl"
         [isActive]="idx === tabActive"
-        [routerLink]="[cat.name.toLowerCase()]"
+        [path]="cat.path"
+        [title]="cat.title"
+        [routerLink]="[cat?.path]"
         (click)="tabActive = idx"
       ></app-category>
     </div>

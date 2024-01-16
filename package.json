@@ -23,6 +23,7 @@
     "@angular/ssr": "^17.0.3",
     "express": "^4.18.2",
     "ng-zorro-antd": "^17.0.1",
+    "ngx-currency-mask": "^4.3.2",
     "ngx-spinner": "^16.0.2",
     "ngx-webstorage": "^13.0.1",
     "rxjs": "~7.8.0",

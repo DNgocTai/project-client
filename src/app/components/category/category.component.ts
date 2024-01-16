@@ -7,6 +7,8 @@ import { Component, Input } from '@angular/core';
 })
 export class CategoryComponent {
   @Input() categoryName: string = '';
+  @Input() title: string = '';
+  @Input() path: string = '';
   @Input() avatarUrl: string = '';
   @Input() isActive: boolean = false;
 }

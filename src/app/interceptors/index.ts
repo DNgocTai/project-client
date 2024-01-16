@@ -8,9 +8,9 @@ export const httpInterceptorProviders = [
     useClass: AuthInterceptor,
     multi: true,
   },
-  {
-    provide: HTTP_INTERCEPTORS,
-    useClass: LoggingInterceptor,
-    multi: true,
-  },
+  // {
+  //   provide: HTTP_INTERCEPTORS,
+  //   useClass: LoggingInterceptor,
+  //   multi: true,
+  // },
 ];

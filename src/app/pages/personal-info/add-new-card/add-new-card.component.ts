@@ -13,6 +13,7 @@ import { IUser } from '../../../interface/user';
 import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 import { AccountService } from '../../../services/account.service';
 import { AuthJWTService } from '../../../services/auth-jwt.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-add-new-card',
@@ -41,8 +42,11 @@ export class AddNewCardComponent implements OnInit {
     private $localStorage: LocalStorageService,
     private $sessionStorage: SessionStorageService,
     private accountSrv: AccountService,
-    private authSrv: AuthJWTService
-  ) {}
+    private authSrv: AuthJWTService,
+    private titleSrv: Title
+  ) {
+    this.titleSrv.setTitle('Tạo thẻ mới | Grocery Coffee');
+  }
 
   ngOnInit(): void {
     this.token =

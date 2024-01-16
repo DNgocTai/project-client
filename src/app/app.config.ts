@@ -15,6 +15,7 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { routes } from './app.routes';
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { httpInterceptorProviders } from './interceptors';
+import { CurrencyMaskModule } from 'ngx-currency-mask';
 
 registerLocaleData(en);
 
@@ -31,5 +32,6 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(
       NgxWebstorageModule.forRoot({ prefix: 'app', separator: '-' })
     ),
+    CurrencyMaskModule,
   ],
 };

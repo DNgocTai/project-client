@@ -4,14 +4,21 @@ export const CATEGORY_LAYOUT_ROUTES: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'starbucks',
+    redirectTo: 'trungnguyen',
   },
   {
-    path: 'starbucks',
+    path: 'trungnguyen',
     loadComponent: () =>
       import(
-        '../app/pages/homepage/category/starbucks/starbucks.component'
-      ).then((c) => c.StarbucksComponent),
+        '../app/pages/homepage/category/trungnguyen/trungnguyen.component'
+      ).then((c) => c.TrungnguyenComponent),
+  },
+  {
+    path: 'nescafe',
+    loadComponent: () =>
+      import('../app/pages/homepage/category/nescafe/nescafe.component').then(
+        (c) => c.NescafeComponent
+      ),
   },
   {
     path: 'lavazza',
@@ -21,10 +28,10 @@ export const CATEGORY_LAYOUT_ROUTES: Routes = [
       ),
   },
   {
-    path: 'nescafe',
+    path: 'vinacafe',
     loadComponent: () =>
-      import('../app/pages/homepage/category/nescafe/nescafe.component').then(
-        (c) => c.NescafeComponent
+      import('../app/pages/homepage/category/vinacafe/vinacafe.component').then(
+        (c) => c.VinacafeComponent
       ),
   },
 ];

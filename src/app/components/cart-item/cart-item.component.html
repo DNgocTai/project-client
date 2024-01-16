@@ -8,6 +8,8 @@
       />
     </div>
     <h3 class="cart-preview-item__title">{{ prod?.name }}</h3>
-    <p class="cart-preview-item__price">{{ prod?.price | currency : "VND" }}</p>
+    <p class="cart-preview-item__price">
+      {{ prod?.price | currency : " " : "symbol" : "1.0-0" }}đ
+    </p>
   </article>
 </div>

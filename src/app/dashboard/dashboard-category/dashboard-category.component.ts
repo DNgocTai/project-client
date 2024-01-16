@@ -23,8 +23,8 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { ICategory } from '../../interface/category';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
-import { NotificationService } from '../../services/notification.service';
 import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-dashboard-category',
@@ -64,6 +64,7 @@ export class DashboardCategoryComponent implements OnInit {
 
   data: any = {
     name: '',
+    title: '',
     // avatarUrl: '',
   };
 
@@ -71,12 +72,12 @@ export class DashboardCategoryComponent implements OnInit {
 
   constructor(
     private readonly categoriesService: CategoriesService,
-    private readonly notificationSrv: NotificationService,
+    private readonly message: NzMessageService,
     private fb: FormBuilder
   ) {
     this.categoryForm = this.fb.group({
       catName: ['', Validators.required],
-      fileName: [''],
+      title: [''],
     });
   }
 
@@ -88,10 +89,8 @@ export class DashboardCategoryComponent implements OnInit {
   createCategory(category: ICategory) {
     this.categoriesService.createCategory(category).subscribe(() => {
       this.categories = [...this.categories];
-      this.createNotifications(
-        'success',
-        'Create success',
-        'Added this item to the category list'
+      this.message.success(
+        'Tạo mới thành công. Đã thêm danh mục này vào danh sách'
       );
       this.loadCategories();
     });
@@ -111,11 +110,7 @@ export class DashboardCategoryComponent implements OnInit {
   delete(id: string) {
     this.categoriesService.deleteCategory(id).subscribe(() => {
       this.categories = this.categories.filter((cat) => cat.id !== id);
-      this.createNotifications(
-        'success',
-        'Delete successfully',
-        'This category has been deleted from the category list'
-      );
+      this.message.success('Xóa thành công');
       this.loadCategories();
     });
   }
@@ -124,10 +119,6 @@ export class DashboardCategoryComponent implements OnInit {
     this.categoriesService.getCategories().subscribe((res: any) => {
       this.categories = res.data;
     });
-  }
-
-  createNotifications(type: string, title: string, msg: string) {
-    this.notificationSrv.createNotification(type, title, msg);
   }
 
   toggleActive(data: any) {
@@ -146,6 +137,7 @@ export class DashboardCategoryComponent implements OnInit {
     this.isEdit = true;
     this.editId = data._id;
     this.categoryForm.patchValue({ catName: data.name });
+    this.categoryForm.patchValue({ title: data.title });
     this.showModal();
   }
 
@@ -168,14 +160,11 @@ export class DashboardCategoryComponent implements OnInit {
 
   submitForm(): void {
     this.data.name = this.categoryForm.value.catName;
+    this.data.title = this.categoryForm.value.title;
     // this.data.avatarUrl = this.categoryForm.value.fileName;
     if (this.isEdit) {
       this.updateCategory(this.data, this.editId);
-      this.createNotifications(
-        'success',
-        'Update successful',
-        'This item has been updated'
-      );
+      this.message.success('Cập nhật thành công');
     } else {
       this.createCategory(this.data);
     }

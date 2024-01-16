@@ -10,7 +10,8 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { NotificationService } from '../../../services/notification.service';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-edit-profile',
@@ -33,9 +34,12 @@ export class EditProfileComponent {
     private $localStorage: LocalStorageService,
     private $sessionStorage: SessionStorageService,
     private accountSrv: AccountService,
-    private notify: NotificationService,
-    private router: Router
-  ) {}
+    private message: NzMessageService,
+    private router: Router,
+    private title: Title
+  ) {
+    this.title.setTitle('Thông tin cá nhân | Grocery Coffee');
+  }
 
   ngOnInit(): void {
     const token: string | null =
@@ -62,11 +66,16 @@ export class EditProfileComponent {
 
   submitForm() {
     const formValue = this.personForm.value;
+    const data = {
+      username: formValue.username,
+      fullName: formValue.fullName,
+      phoneNumber: formValue.phoneNumber,
+    };
 
     this.accountSrv
       .updateUser(formValue, this.userLoggedIn?._id)
       .subscribe(() => {
-        this.notify.createNotification('success', 'Cập nhật thành công', '');
+        this.message.success('Cập nhật thành công');
         this.router.navigate(['/sign-in']);
       });
   }

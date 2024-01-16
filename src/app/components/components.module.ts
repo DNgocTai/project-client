@@ -16,10 +16,8 @@ import { RouterModule } from '@angular/router';
 import { SwitchComponent } from './switch/switch.component';
 import { NzSwitchModule } from 'ng-zorro-antd/switch';
 import { FooterComponent } from './footer/footer.component';
-import { AddressComponent } from './address/address.component';
 import { TopBarLoggedComponent } from './top-bar-logged/top-bar-logged.component';
 import { FavouriteCartItemComponent } from './favourite-cart-item/favourite-cart-item.component';
-import { CheckoutCartItemComponent } from './checkout-cart-item/checkout-cart-item.component';
 import { GiftComponent } from './gift/gift.component';
 import { CheckoutBlockComponent } from './checkout-block/checkout-block.component';
 import { ShippingComponent } from './shipping/shipping.component';
@@ -38,6 +36,8 @@ import { CartItemComponent } from './cart-item/cart-item.component';
 import { CartListComponent } from './cart-list/cart-list.component';
 import { FavouriteListComponent } from './favourite-list/favourite-list.component';
 import { PaymentComponent } from './payment/payment.component';
+import { OrderComponent } from '../pages/personal-info/order/order.component';
+import { OrderInfoComponent } from './order-info/order-info.component';
 
 const COMPONENTS: any[] = [
   ProductCompComponent,
@@ -49,11 +49,8 @@ const COMPONENTS: any[] = [
   SwitchComponent,
   FooterComponent,
   TopBarLoggedComponent,
-  AddressComponent,
   FavouriteCartItemComponent,
-  CheckoutCartItemComponent,
   GiftComponent,
-  CheckoutBlockComponent,
   ShippingComponent,
   ShippingMethodComponent,
   GiftComponent,
@@ -70,6 +67,8 @@ const COMPONENTS: any[] = [
   CartListComponent,
   FavouriteListComponent,
   PaymentComponent,
+  TopBarLoggedComponent,
+  OrderInfoComponent,
 ];
 
 @NgModule({

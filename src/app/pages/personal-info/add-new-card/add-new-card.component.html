@@ -9,7 +9,7 @@
             class="icon cart-info__back-arrow"
           />
         </a>
-        Add credit or debit card
+        Thêm thẻ tín dụng hoặc thẻ ghi nợ
       </h2>
 
       <form class="form form-card" [formGroup]="addNewCardForm">
@@ -17,14 +17,14 @@
         <div class="form__row">
           <div class="form__group">
             <label for="first-name" class="form__label form-card__label">
-              First Name
+              Tên
             </label>
             <div class="form__text-input">
               <input
                 type="text"
                 name=""
                 id="first-name"
-                placeholder="First name"
+                placeholder="Tên"
                 formControlName="firstName"
                 class="form__input"
                 required
@@ -36,18 +36,18 @@
                 class="form__input-icon-error"
               />
             </div>
-            <p class="form__error">Please enter your first name</p>
+            <p class="form__error">Hãy điền tên của bạn</p>
           </div>
           <div class="form__group">
             <label for="last-name" class="form__label form-card__label">
-              Last Name
+              Họ
             </label>
             <div class="form__text-input">
               <input
                 type="text"
                 name=""
                 id="last-name"
-                placeholder="Last name"
+                placeholder="Họ"
                 formControlName="lastName"
                 class="form__input"
                 required
@@ -58,7 +58,7 @@
                 class="form__input-icon-error"
               />
             </div>
-            <p class="form__error">Please enter your last name</p>
+            <p class="form__error">Hãy nhập họ của bạn</p>
           </div>
         </div>
 
@@ -66,14 +66,14 @@
         <div class="form__row">
           <div class="form__group">
             <label for="card-number" class="form__label form-card__label">
-              Card Number
+              Số thẻ
             </label>
             <div class="form__text-input">
               <input
                 type="text"
                 name=""
                 id="card-number"
-                placeholder="Card Number"
+                placeholder="Số thẻ"
                 formControlName="cardNumber"
                 class="form__input"
                 required
@@ -84,18 +84,18 @@
                 class="form__input-icon-error"
               />
             </div>
-            <p class="form__error">Please enter a valid card number</p>
+            <p class="form__error">Hãy điền số thẻ hợp lệ</p>
           </div>
           <div class="form__group">
             <label for="expiration-date" class="form__label form-card__label">
-              Expiration Date
+              Ngày hết hạn
             </label>
             <div class="form__text-input">
               <input
                 type="text"
                 name=""
                 id="expiration-date"
-                placeholder="Expiration Date"
+                placeholder="Ngày hết hạn"
                 formControlName="expiryDate"
                 class="form__input"
                 required
@@ -106,7 +106,7 @@
                 class="form__input-icon-error"
               />
             </div>
-            <p class="form__error">Please enter a valid expiration date</p>
+            <p class="form__error">Hãy điền ngày hết hạn hợp lệ</p>
           </div>
         </div>
 
@@ -132,18 +132,18 @@
                 class="form__input-icon-error"
               />
             </div>
-            <p class="form__error">Please enter a valid CVV</p>
+            <p class="form__error">Hãy nhập số CVV hợp lệ</p>
           </div>
           <div class="form__group">
             <label for="phone-number" class="form__label form-card__label">
-              Phone Number
+              Số điện thoại
             </label>
             <div class="form__text-input">
               <input
                 type="text"
                 name=""
                 id="phone-number"
-                placeholder="Phone Number"
+                placeholder="Số điện thoại"
                 formControlName="phoneNumber"
                 class="form__input"
                 required
@@ -154,13 +154,13 @@
                 class="form__input-icon-error"
               />
             </div>
-            <p class="form__error">Please enter a valid phone number</p>
+            <p class="form__error">Hãy nhập số điện thoại hợp lệ</p>
           </div>
         </div>
 
         <div class="form__group">
           <label for="set-default-card" class="form__label form-card__label">
-            Card Preferences
+            Tùy chọn thẻ
           </label>
           <label class="form__checkbox">
             <input
@@ -170,18 +170,18 @@
               checked
               class="form__checkbox-input d-none"
             />
-            <span class="form__checkbox-label">Set as default card</span>
+            <span class="form__checkbox-label">Đặt làm thẻ mặc định</span>
           </label>
         </div>
 
         <div class="form-card__bottom">
-          <a class="btn btn--text" [routerLink]="['/personal-info']">Cancel</a>
+          <a class="btn btn--text" [routerLink]="['/personal-info']">Hủy</a>
           <button
             [disabled]="addNewCardForm.invalid"
             class="btn btn--primary btn--rounded"
             (click)="addNewCard()"
           >
-            Save card
+            Lưu thẻ
           </button>
         </div>
       </form>

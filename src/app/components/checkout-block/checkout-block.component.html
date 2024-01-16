@@ -1,26 +1,27 @@
 <div class="cart-info">
   <div class="cart-info__row">
-    <span>Subtotal <span class="cart-info__sub-label">(items)</span></span>
-    <span>3</span>
+    <span>Tổng sản phẩm</span>
+    <span>{{ subTotalItems }}</span>
   </div>
   <div class="cart-info__row">
-    <span>Price <span class="cart-info__sub-label">(Total)</span></span>
-    <span>$191.65</span>
+    <span>Giá</span>
+    <span>{{ price | currency : " " : "symbol" : "1.0-0" }}đ</span>
   </div>
   <div class="cart-info__row">
-    <span>Shipping</span>
-    <span>$10.00</span>
+    <span>Vận chuyển</span>
+    <span>Miễn phí</span>
   </div>
   <div class="cart-info__separate"></div>
   <div class="cart-info__row">
-    <span>Estimated Total</span>
-    <span>$201.65</span>
+    <span>Tổng tiền ước tính</span>
+    <span>{{ price | currency : " " : "symbol" : "1.0-0" }}đ</span>
   </div>
-  <a
-    href="./shipping.html"
+  <button
+    style="width: 100%"
     class="cart-info__next-btn btn btn--primary btn--rounded"
-    [routerLink]="[nextPageUrl]"
+    [routerLink]="nextPageUrl"
+    (click)="checkout()"
   >
-    Continue to checkout
-  </a>
+    {{ isCheckout ? "Đặt hàng" : "Tiếp tục đặt hàng" }}
+  </button>
 </div>

@@ -9,8 +9,8 @@ import {
 import { Title } from '@angular/platform-browser';
 import { LocalStorageService } from 'ngx-webstorage';
 import { AccountService } from '../../services/account.service';
-import { NotificationService } from '../../services/notification.service';
 import { Router } from '@angular/router';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-create-new-password',
@@ -32,26 +32,22 @@ export class CreateNewPasswordComponent {
     private fb: FormBuilder,
     private localStorage: LocalStorageService,
     private accountSrv: AccountService,
-    private notify: NotificationService,
+    private message: NzMessageService,
     private router: Router
   ) {
-    this.titleService.setTitle('Create New Password | Grocery Mart');
+    this.titleService.setTitle('Tạo mật khẩu mới | Grocery Coffee');
   }
 
   submitForm() {
     const formValue = this.newPassForm.value;
 
     if (formValue.password !== formValue.confirmPassword) {
-      this.notify.createNotification('error', 'Mật khẩu không khớp!', '');
+      this.message.error('Mật khẩu không khớp!');
     } else {
       this.accountSrv
         .updateUser({ password: formValue.password }, this.userResetId)
         .subscribe(() => {
-          this.notify.createNotification(
-            'success',
-            'Thay đổi mật khẩu thành công',
-            ''
-          );
+          this.message.success('Thay đổi mật khẩu thành công');
           this.localStorage.clear('resetPassword');
           this.router.navigate(['/sign-in']);
         });

@@ -1,15 +1,12 @@
-<button nz-button nzType="primary" (click)="showModal()">+ Add</button>
-<nz-table
-  ngSkipHydration
-  [nzTitle]="'All Category'"
-  #basicTable
-  [nzData]="categories"
->
+<button nz-button nzType="primary" (click)="showModal()">
+  + Thêm danh mục
+</button>
+<nz-table ngSkipHydration #basicTable [nzData]="categories">
   <thead>
     <tr>
-      <th>Image</th>
+      <th>Hình ảnh</th>
       <th nzCustomFilter>
-        Name
+        Tên
         <nz-filter-trigger
           [(nzVisible)]="visibleSearch"
           [nzActive]="searchValue.length > 0"
@@ -18,9 +15,10 @@
           <span nz-icon nzType="search"></span>
         </nz-filter-trigger>
       </th>
-      <th>Products</th>
-      <th>Status</th>
-      <th>Action</th>
+      <th>Tiêu đề</th>
+      <th>Sản phẩm</th>
+      <th>Trạng thái</th>
+      <th>Chức năng</th>
     </tr>
   </thead>
   <tbody>
@@ -31,11 +29,13 @@
             data.avatarUrl || '../../../assets/images/categories/unknown.png'
           "
           [alt]="data.name"
+          width="70px"
         />
       </td>
       <td style="vertical-align: middle">{{ data.name }}</td>
+      <td style="vertical-align: middle">{{ data.title }}</td>
       <td style="vertical-align: middle">
-        {{ data.product?.length > 0 ? data.product.length : "Empty" }}
+        {{ data.product?.length > 0 ? data.product.length : "Trống" }}
       </td>
       <td style="vertical-align: middle">
         <app-switch
@@ -47,7 +47,7 @@
         <a>
           <button nz-button nzType="default" (click)="patchValue(data)">
             <span nz-icon nzType="edit" nzTheme="outline"></span>
-            Edit
+            Sửa
           </button>
         </a>
         <nz-divider nzType="vertical"></nz-divider>
@@ -57,9 +57,9 @@
             nzType="primary"
             nzDanger
             nz-popconfirm
-            nzPopconfirmTitle="Are you sure?"
-            nzOkText="ok"
-            nzCancelText="cancel"
+            nzPopconfirmTitle="Bạn chắc chứ?"
+            nzOkText="xác nhận"
+            nzCancelText="hủy"
             (nzOnConfirm)="delete(data._id)"
           >
             <span nz-icon nzType="delete" nzTheme="outline"></span>
@@ -78,22 +78,33 @@
   (nzOnCancel)="handleCancel()"
 >
   <ng-template #modalTitle>{{
-    isEdit ? "Edit Category" : "Add Category"
+    isEdit ? "Chỉnh sửa danh mục" : "Thêm danh mục"
   }}</ng-template>
 
   <ng-template #modalContent>
     <form nz-form [formGroup]="categoryForm">
       <nz-form-item>
-        <nz-form-label [nzSpan]="7" nzRequired>Username</nz-form-label>
+        <nz-form-label [nzSpan]="7" nzRequired>Tên danh mục</nz-form-label>
         <nz-form-control [nzSpan]="12" [nzErrorTip]="userErrorTpl">
           <input
             nz-input
             formControlName="catName"
-            placeholder="Enter category name"
+            placeholder="Nhập tên danh mục"
           />
           <ng-template #userErrorTpl let-control>
             <ng-container *ngIf="control.hasError('required')"
-              >Please input your username!</ng-container
+              >Hãy nhập tên danh mục!</ng-container
+            >
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzRequired>Tiêu đề</nz-form-label>
+        <nz-form-control [nzSpan]="12" [nzErrorTip]="userErrorTpl2">
+          <input nz-input formControlName="title" placeholder="Nhập tiêu đề" />
+          <ng-template #userErrorTpl2 let-control>
+            <ng-container *ngIf="control.hasError('required')"
+              >Hãy nhập tiêu đề!</ng-container
             >
           </ng-template>
         </nz-form-control>
@@ -114,7 +125,7 @@
     </form>
   </ng-template>
   <ng-template #modalFooter>
-    <button nz-button nzType="default" (click)="handleCancel()">Cancel</button>
+    <button nz-button nzType="default" (click)="handleCancel()">Hủy</button>
     <button
       nz-button
       nzType="primary"
@@ -122,7 +133,7 @@
       [nzLoading]="isConfirmLoading"
       [disabled]="!categoryForm.valid"
     >
-      {{ isEdit ? "Update" : "Submit" }}
+      {{ isEdit ? "Cập nhật" : "Xác nhận" }}
     </button>
   </ng-template>
 </nz-modal>
@@ -133,7 +144,7 @@
       <input
         type="text"
         nz-input
-        placeholder="Search name"
+        placeholder="Tìm tên"
         [(ngModel)]="searchValue"
       />
       <button
@@ -143,9 +154,9 @@
         (click)="search()"
         class="search-button"
       >
-        Search
+        Tìm kiếm
       </button>
-      <button nz-button nzSize="small" (click)="reset()">Reset</button>
+      <button nz-button nzSize="small" (click)="reset()">Đặt lại</button>
     </div>
   </div>
 </nz-dropdown-menu>

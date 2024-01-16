@@ -1,0 +1,42 @@
+<nz-table ngSkipHydration #basicTable [nzData]="orders">
+  <thead>
+    <tr>
+      <th>Mã đơn hàng</th>
+      <th>Tên người dùng</th>
+      <th>Địa chỉ</th>
+      <th>Số lượng</th>
+      <th>Tổng</th>
+      <th>Chức năng</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <td style="vertical-align: middle">{{ data?._id }}</td>
+      <td style="vertical-align: middle">{{ data?.fullName }}</td>
+      <td style="vertical-align: middle">
+        {{ data?.address }}
+      </td>
+      <td style="vertical-align: middle">{{ data?.totalQty }}</td>
+      <td style="vertical-align: middle">
+        {{ data?.totalAmount | currency : " " : "symbol" : "1.0-0" }}đ
+      </td>
+      <td style="vertical-align: middle">
+        <nz-divider nzType="vertical"></nz-divider>
+        <a>
+          <button
+            nz-button
+            nzType="primary"
+            nzDanger
+            nz-popconfirm
+            nzPopconfirmTitle="Bạn chắc chứ?"
+            nzOkText="xác nhận"
+            nzCancelText="hủy"
+            (nzOnConfirm)="delete(data._id)"
+          >
+            <span nz-icon nzType="delete" nzTheme="outline"></span>
+          </button>
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

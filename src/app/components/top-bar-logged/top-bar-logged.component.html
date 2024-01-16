@@ -17,14 +17,14 @@
       <a [routerLink]="'/homepage'" class="logo top-bar__logo">
         <img
           src="../../../assets/images/logo/logo.png"
-          alt="grocerymart"
+          alt="grocerycoffee"
           class="logo__img top-bar__logo-img"
         />
-        <h1 class="logo__title top-bar__logo-title">grocerymart</h1>
+        <h1 class="logo__title top-bar__logo-title">grocerycoffee</h1>
       </a>
 
       <!-- Navbar -->
-      <nav id="navbar" class="navbar hide">
+      <!-- <nav id="navbar" class="navbar hide">
         <button class="navbar__close-btn js-toggle" toggle-target="#navbar">
           <img
             class="icon"
@@ -86,7 +86,7 @@
           </li>
         </ul>
       </nav>
-      <div class="navbar__overlay js-toggle" toggle-target="#navbar"></div>
+      <div class="navbar__overlay js-toggle" toggle-target="#navbar"></div> -->
 
       <!-- Logged -->
       <!-- Actions -->
@@ -103,7 +103,7 @@
           </div>
 
           <div class="top-act__group d-md-none">
-            <div class="top-act__btn-wrap">
+            <!-- <div class="top-act__btn-wrap">
               <button class="top-act__btn" [routerLink]="['favourite-list']">
                 <img
                   src="../../../assets/images/icon/heart.svg"
@@ -115,13 +115,12 @@
                 }}</span>
               </button>
 
-              <!-- Dropdown -->
               <div class="act-dropdown">
                 <app-favourite-list></app-favourite-list>
               </div>
             </div>
 
-            <div class="top-act__separate"></div>
+            <div class="top-act__separate"></div> -->
 
             <div class="top-act__btn-wrap">
               <button class="top-act__btn" [routerLink]="['checkout']">
@@ -130,22 +129,27 @@
                   alt=""
                   class="icon top-act__icon"
                 />
-                <span class="top-act__title">{{
-                  userLoggedIn?.cash | currency : "VND"
-                }}</span>
+                <span class="top-act__title">
+                  {{
+                    subTotal || 0 | currency : " " : "symbol" : "1.0-0"
+                  }}đ</span
+                >
               </button>
 
               <!-- Dropdown -->
               <div class="act-dropdown">
-                <app-cart-list></app-cart-list>
+                <app-cart-list [cart]="cart"></app-cart-list>
               </div>
             </div>
           </div>
 
           <div class="top-act__user">
             <img
-              [src]="userLoggedIn?.avatarUrl"
-              alt=""
+              [src]="
+                userLoggedIn?.avatarUrl ||
+                '../../../assets/images/avatar/user.jpg'
+              "
+              [alt]="userLoggedIn?.fullName"
               class="top-act__avatar"
             />
 
@@ -160,7 +164,10 @@
 
                 <div class="user-menu__top">
                   <img
-                    [src]="userLoggedIn?.avatarUrl"
+                    [src]="
+                      userLoggedIn?.avatarUrl ||
+                      '../../../assets/images/avatar/user.jpg'
+                    "
                     alt=""
                     class="user-menu__avatar"
                   />
@@ -173,33 +180,22 @@
                 <ul class="user-menu__list">
                   <li>
                     <a [routerLink]="['/personal-info']" class="user-menu__link"
-                      >Profile</a
+                      >Hồ sơ</a
                     >
                   </li>
                   <li>
-                    <a class="user-menu__link" [routerLink]="['favourite-list']"
-                      >Favourite list</a
+                    <a
+                      [routerLink]="['/personal-info/edit-profile']"
+                      class="user-menu__link"
+                      >Cài đặt</a
                     >
-                  </li>
-                  <li class="user-menu__separate">
-                    <a href="#!" class="user-menu__link" id="switch-theme-btn">
-                      <span>Dark mode</span>
-                      <img
-                        src="../../../assets/images/icon/sun.svg"
-                        alt=""
-                        class="icon user-menu__icon"
-                      />
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#!" class="user-menu__link">Settings</a>
                   </li>
                   <li class="user-menu__separate">
                     <a
                       [routerLink]="['/sign-in']"
                       (click)="logout()"
                       class="user-menu__link"
-                      >Logout</a
+                      >Đăng xuất</a
                     >
                   </li>
                 </ul>
@@ -214,12 +210,12 @@
       <ng-template #unLoggedTpml>
         <div class="top-act">
           <a [routerLink]="['/sign-in']" class="btn btn--text d-md-none"
-            >Sign In</a
+            >Đăng nhập</a
           >
           <a
             [routerLink]="['/sign-up']"
             class="top-act__sign-up btn btn--primary"
-            >Sign Up</a
+            >Đăng ký</a
           >
         </div>
       </ng-template>

@@ -8,24 +8,26 @@ import { IUser } from '../../interface/user';
 import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 import { ProductsService } from '../../services/products.service';
 import { CartService } from '../../services/cart.service';
+import { FormsModule } from '@angular/forms';
+import { TopBarLoggedComponent } from '../../components/top-bar-logged/top-bar-logged.component';
 
 @Component({
   selector: 'app-common-layout',
   standalone: true,
   templateUrl: './common-layout.component.html',
   styleUrl: './common-layout.component.scss',
-  imports: [ComponentsModule, RouterOutlet, CommonModule],
+  imports: [ComponentsModule, RouterOutlet, CommonModule, FormsModule],
 })
-export class CommonLayoutComponent {
+export class CommonLayoutComponent implements OnInit {
   userIdentified: any;
   userLoggedIn: IUser | undefined;
-  carts: any;
+  cart: any[] = [];
+  subTotal: any;
 
   constructor(
     private accountSrv: AccountService,
     private localStorageService: LocalStorageService,
     private sessionStorageService: SessionStorageService,
-    private productSrv: ProductsService,
     private cartSrv: CartService
   ) {}
 
@@ -38,8 +40,11 @@ export class CommonLayoutComponent {
       this.userIdentified = true;
       this.accountSrv.fetch().subscribe((res: any) => {
         this.userLoggedIn = { ...res.data };
+        this.localStorageService.store('role', res?.data?.role);
         console.log(this.userLoggedIn);
       });
     }
+    this.cartSrv.getLocalStorage();
+    this.cart = this.cartSrv.cart;
   }
 }
