@@ -36,7 +36,7 @@ export class ProductDetailComponent implements OnInit {
         quantity: 1,
       };
       data.totalAmount = data.price * data.quantity;
-      this.cartSrv.addToCart(data);
+      this.cartSrv.addToCart(data, id);
       this.message.success(`Đã thêm ${data?.name} vào giỏ hàng`);
       this.commonLayout.subTotal = this.cartSrv.getTotalPrice();
     });

@@ -27,13 +27,15 @@
       <div class="checkout-container">
         <ul class="breadcrumbs checkout-page__breadcrumbs">
           <li>
-            <a href="./" class="breadcrumbs__link">
+            <a [routerLink]="['/homepage']" class="breadcrumbs__link">
               Trang chủ
               <img src="../../../assets/images/icon/arrow-right.svg" alt="" />
             </a>
           </li>
           <li>
-            <a href="#!" class="breadcrumbs__link breadcrumbs__link--current"
+            <a
+              [routerLink]="['/checkout']"
+              class="breadcrumbs__link breadcrumbs__link--current"
               >Giỏ hàng</a
             >
           </li>

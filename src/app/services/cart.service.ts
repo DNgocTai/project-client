@@ -27,9 +27,16 @@ export class CartService {
     }, 0);
   }
 
-  addToCart(data: any) {
+  addToCart(data: any, id: string) {
     this.getLocalStorage();
-    this.cart.push(data);
+    const itemExits = this.cart.find((c) => c._id === id);
+    console.log(!itemExits);
+
+    if (!itemExits) {
+      this.cart.push(data);
+    } else {
+      this.addOne(id);
+    }
     this.setLocalStorage();
   }
 
