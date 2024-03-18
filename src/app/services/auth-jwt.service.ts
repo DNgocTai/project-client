@@ -18,7 +18,7 @@ export class AuthJWTService {
     private cartSrv: CartService
   ) {}
 
-  baseUrl = 'http://localhost:3000';
+  baseUrl = 'https://project-server-production-f74c.up.railway.app';
 
   login(user: IUser) {
     return this.http

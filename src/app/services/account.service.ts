@@ -19,7 +19,7 @@ export class AccountService {
   private authenticationState = new ReplaySubject<IUser | null>(1);
   private accountCache$?: Observable<IUser | null>;
 
-  baseUrl = 'http://localhost:3000';
+  baseUrl = 'https://project-server-production-f74c.up.railway.app';
 
   constructor(
     private http: HttpClient,

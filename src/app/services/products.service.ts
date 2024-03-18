@@ -7,7 +7,7 @@ import { IProduct } from '../interface/product';
   providedIn: 'root',
 })
 export class ProductsService {
-  baseUrl = 'http://localhost:3000';
+  baseUrl = 'https://project-server-production-f74c.up.railway.app';
   constructor(private http: HttpClient) {}
 
   createProduct(product: IProduct): Observable<any> {

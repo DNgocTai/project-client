@@ -16,7 +16,8 @@ export class AuthInterceptor implements HttpInterceptor {
     private localStorage: LocalStorageService,
     private sessionStorage: SessionStorageService
   ) {
-    this.SERVER_API_URL = 'http/localhost:3000';
+    this.SERVER_API_URL =
+      'https://project-server-production-f74c.up.railway.app';
   }
 
   intercept(

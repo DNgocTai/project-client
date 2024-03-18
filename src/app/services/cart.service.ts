@@ -6,7 +6,7 @@ import { LocalStorageService } from 'ngx-webstorage';
   providedIn: 'root',
 })
 export class CartService {
-  baseUrl = 'http://localhost:3000';
+  baseUrl = 'https://project-server-production-f74c.up.railway.app';
   cart: any[] = [];
   subTotal: number = 0;
 
