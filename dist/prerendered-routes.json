@@ -1,0 +1,28 @@
+{
+  "routes": [
+    "/",
+    "/admin",
+    "/admin-signin",
+    "/checkout",
+    "/favourite-list",
+    "/homepage",
+    "/homepage/lavazza",
+    "/homepage/nescafe",
+    "/homepage/trungnguyen",
+    "/homepage/vinacafe",
+    "/manage-category",
+    "/manage-product",
+    "/manage-user",
+    "/new-password",
+    "/payment",
+    "/personal-info",
+    "/personal-info/add-new-card",
+    "/personal-info/edit-profile",
+    "/personal-info/my-wallet",
+    "/personal-info/order",
+    "/reset-password",
+    "/shipping",
+    "/sign-in",
+    "/sign-up"
+  ]
+}
