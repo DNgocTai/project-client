@@ -30,7 +30,6 @@ export class CartService {
   addToCart(data: any, id: string) {
     this.getLocalStorage();
     const itemExits = this.cart.find((c) => c._id === id);
-
     if (!itemExits) {
       this.cart.push(data);
     } else {

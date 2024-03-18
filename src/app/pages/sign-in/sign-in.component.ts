@@ -54,6 +54,8 @@ export class SignInComponent implements OnInit {
       .subscribe(
         () => {
           this.isSpinning = true;
+          this.cartSrv.cart = [];
+          this.cartSrv.setLocalStorage();
           setTimeout(() => {
             this.isSpinning = false;
             this.router.navigate(['/homepage']);

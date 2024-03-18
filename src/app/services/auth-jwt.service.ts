@@ -30,7 +30,7 @@ export class AuthJWTService {
     return new Observable((observer) => {
       this._localStorage.clear('authToken');
       this.$sessionStorage.clear('authToken');
-      this.cartSrv.clearAllCart();
+      this._localStorage.clear('shopping-cart');
       this._localStorage.clear('role');
       observer.complete();
     });
