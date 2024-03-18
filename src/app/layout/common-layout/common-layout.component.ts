@@ -41,10 +41,9 @@ export class CommonLayoutComponent implements OnInit {
       this.accountSrv.fetch().subscribe((res: any) => {
         this.userLoggedIn = { ...res.data };
         this.localStorageService.store('role', res?.data?.role);
-        this.localStorageService.store('shopping-cart', []);
       });
-      this.cartSrv.getLocalStorage();
-      this.cart = this.cartSrv.cart;
     }
+    this.cartSrv.getLocalStorage();
+    this.cart = this.cartSrv.cart;
   }
 }
