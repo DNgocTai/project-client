@@ -57,8 +57,6 @@ export class SignInComponent implements OnInit {
           setTimeout(() => {
             this.isSpinning = false;
             this.router.navigate(['/homepage']);
-            this.cartSrv.cart = [];
-            this.cartSrv.setLocalStorage();
           }, 1000);
         },
         () => {

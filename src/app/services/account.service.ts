@@ -52,7 +52,6 @@ export class AccountService {
 
   fetch(): Observable<IUser> {
     const token = this._localStorage.retrieve('authToken');
-
     return this.http.get<IUser>(`${this.baseUrl}/auth/me`, {
       headers: { Authorization: 'Bearer ' + token },
     });
