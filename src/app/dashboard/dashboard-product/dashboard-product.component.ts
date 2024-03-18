@@ -98,7 +98,6 @@ export class DashboardProductComponent implements OnInit {
     this.productSrv.createProduct(prod).subscribe(() => {
       this.products = [...this.products];
       this.message.success('Tạo mới sản phẩm thành công');
-      console.log(prod);
       this.loadProducts();
     });
   }
@@ -129,9 +128,7 @@ export class DashboardProductComponent implements OnInit {
   }
 
   toggleActive(data: any) {
-    console.log(data);
     data.status = !data.status;
-    console.log(data);
     this.updateProduct(data, data._id);
   }
 
@@ -149,7 +146,6 @@ export class DashboardProductComponent implements OnInit {
       star: data.star,
       categoryName: data.categoryName,
     });
-    console.log(this.productForm.value);
     this.showModal();
   }
 

@@ -26,7 +26,6 @@ export class ProductDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.token = this.localStorage.retrieve('authToken');
-    console.log(this.token === null);
   }
 
   addToCart(id: string) {

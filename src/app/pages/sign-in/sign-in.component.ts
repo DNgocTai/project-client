@@ -13,6 +13,7 @@ import { mergeMap } from 'rxjs';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { LocalStorageService } from 'ngx-webstorage';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -32,7 +33,8 @@ export class SignInComponent implements OnInit {
     private accountService: AccountService,
     private router: Router,
     private message: NzMessageService,
-    private localStorage: LocalStorageService
+    private localStorage: LocalStorageService,
+    private cartSrv: CartService
   ) {
     this.titleService.setTitle('Đăng nhập | Grocery Coffee');
 
@@ -55,6 +57,7 @@ export class SignInComponent implements OnInit {
           setTimeout(() => {
             this.isSpinning = false;
             this.router.navigate(['/homepage']);
+            this.cartSrv.setLocalStorage();
           }, 1000);
         },
         () => {

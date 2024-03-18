@@ -47,7 +47,6 @@ export class CheckoutBlockComponent implements OnInit {
       if (token) {
         this.accountSrv.fetch().subscribe((res: any) => {
           this.userLoggedIn = { ...res.data };
-          console.log(this.userLoggedIn);
           const orderCart = {
             fullName: this.userLoggedIn.fullName,
             phoneNumber: this.userLoggedIn.phoneNumber,

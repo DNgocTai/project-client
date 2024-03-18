@@ -51,7 +51,6 @@ export class SignUpComponent {
 
   signUp() {
     const formValue = this.signupForm.value;
-    console.log(formValue);
 
     if (
       !this.authSrv.isMatchPassword(

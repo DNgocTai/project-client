@@ -30,7 +30,6 @@ export class CartService {
   addToCart(data: any, id: string) {
     this.getLocalStorage();
     const itemExits = this.cart.find((c) => c._id === id);
-    console.log(!itemExits);
 
     if (!itemExits) {
       this.cart.push(data);
@@ -53,7 +52,6 @@ export class CartService {
     this.cart = [...this.cart];
     this.setLocalStorage();
     this.getLocalStorage();
-    console.log(this.cart);
   }
 
   minusOne(id: string) {
@@ -64,7 +62,6 @@ export class CartService {
       this.cart = [...this.cart];
       this.setLocalStorage();
       this.getLocalStorage();
-      console.log(this.cart);
     }
   }
 

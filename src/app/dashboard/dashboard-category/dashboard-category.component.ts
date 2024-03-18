@@ -125,9 +125,7 @@ export class DashboardCategoryComponent implements OnInit {
   }
 
   toggleActive(data: any) {
-    console.log(data);
     data.status = !data.status;
-    console.log(data);
     this.updateCategory(data, data._id);
   }
 
