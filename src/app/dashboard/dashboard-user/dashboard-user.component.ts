@@ -26,6 +26,7 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { AccountService } from '../../services/account.service';
 import { IUser } from '../../interface/user';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-dashboard-user',
@@ -76,10 +77,12 @@ export class DashboardUserComponent implements OnInit {
   constructor(
     private readonly accountSrv: AccountService,
     private readonly message: NzMessageService,
-    private readonly fb: FormBuilder
+    private readonly fb: FormBuilder,
+    private readonly title: Title
   ) {}
 
   ngOnInit(): void {
+    this.title.setTitle('Người dùng | Grocery Coffee');
     this.loadUsers();
   }
 

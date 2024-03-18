@@ -26,6 +26,7 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { AccountService } from '../../services/account.service';
 import { OrderService } from '../../services/order.service';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-dashboard-order',
@@ -62,10 +63,12 @@ export class DashboardOrderComponent implements OnInit {
   constructor(
     private readonly accountSrv: AccountService,
     private readonly orderSrv: OrderService,
-    private readonly message: NzMessageService
+    private readonly message: NzMessageService,
+    private readonly title: Title
   ) {}
 
   ngOnInit(): void {
+    this.title.setTitle('Đơn hàng | Grocery Coffee');
     this.loadOrders();
   }
 

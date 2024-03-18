@@ -13,6 +13,7 @@ export class TopBarLoggedComponent implements OnInit {
   @Input() userLoggedIn: IUser | undefined;
   @Input() cart: any[] = [];
   @Input() subTotal: number = 0;
+  navMobile: boolean = false;
 
   constructor(private authSrv: AuthJWTService, private cartSrv: CartService) {}
 

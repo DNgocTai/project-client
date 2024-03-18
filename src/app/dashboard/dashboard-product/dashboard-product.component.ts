@@ -22,6 +22,7 @@ import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { CategoriesService } from '../../services/categories.service';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-dashboard-product',
   standalone: true,
@@ -72,7 +73,8 @@ export class DashboardProductComponent implements OnInit {
     private readonly productSrv: ProductsService,
     private readonly message: NzMessageService,
     private fb: FormBuilder,
-    private categorySrv: CategoriesService
+    private categorySrv: CategoriesService,
+    private readonly title: Title
   ) {
     this.productForm = this.fb.group({
       name: ['', Validators.required],
@@ -83,6 +85,7 @@ export class DashboardProductComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.title.setTitle('Sản phẩm | Grocery Coffee');
     this.loadProducts();
     this.categorySrv.getCategories().subscribe((res: any) => {
       this.productCat = res.data.filter((prodCat: any) => {

@@ -4,6 +4,7 @@
       <!-- More -->
       <button
         class="top-bar__more d-none d-lg-block js-toggle"
+        (click)="navMobile = !navMobile"
         toggle-target="#navbar"
       >
         <img
@@ -24,8 +25,12 @@
       </a>
 
       <!-- Navbar -->
-      <!-- <nav id="navbar" class="navbar hide">
-        <button class="navbar__close-btn js-toggle" toggle-target="#navbar">
+      <nav id="navbar" [class]="!navMobile ? 'navbar hide' : 'navbar show'">
+        <button
+          class="navbar__close-btn js-toggle"
+          (click)="navMobile = !navMobile"
+          toggle-target="#navbar"
+        >
           <img
             class="icon"
             src="../../../assets/images/icon/arrow-left.svg"
@@ -33,60 +38,23 @@
           />
         </button>
 
-        <a href="./checkout.html" class="nav-btn d-none d-md-flex">
+        <a [routerLink]="['/checkout']" class="nav-btn d-none d-md-flex">
           <img
             src="../../../assets/images/other/Buy.png"
             alt=""
             class="nav-btn__icon icon"
           />
           <span class="nav-btn__title">Cart</span>
-          <span class="nav-btn__qnt">3</span>
+          <span class="nav-btn__qnt"
+            >{{ subTotal || 0 | currency : " " : "symbol" : "1.0-0" }}đ</span
+          >
         </a>
-
-        <a href="#!" class="nav-btn d-none d-md-flex">
-          <img
-            src="../../../assets/images/icon/heart.svg"
-            alt=""
-            class="nav-btn__icon icon"
-          />
-          <span class="nav-btn__title">Favorite</span>
-          <span class="nav-btn__qnt">3</span>
-        </a>
-
-        <ul class="navbar__list js-dropdown-list">
-          <li class="navbar__item">
-            <a href="#!" class="navbar__link">
-              Departments
-              <img
-                src="../../../assets/images/other/arrow-down.png"
-                alt=""
-                class="icon navbar__arrow"
-              />
-            </a>
-          </li>
-          <li class="navbar__item">
-            <a href="#!" class="navbar__link">
-              Grocery
-              <img
-                src="../../../assets/images/other/arrow-down.png"
-                alt=""
-                class="icon navbar__arrow"
-              />
-            </a>
-          </li>
-          <li class="navbar__item">
-            <a href="#!" class="navbar__link">
-              Beauty
-              <img
-                src="../../../assets/images/other/arrow-down.png"
-                alt=""
-                class="icon navbar__arrow"
-              />
-            </a>
-          </li>
-        </ul>
       </nav>
-      <div class="navbar__overlay js-toggle" toggle-target="#navbar"></div> -->
+      <div
+        class="navbar__overlay js-toggle"
+        (click)="navMobile = !navMobile"
+        toggle-target="#navbar"
+      ></div>
 
       <!-- Logged -->
       <!-- Actions -->

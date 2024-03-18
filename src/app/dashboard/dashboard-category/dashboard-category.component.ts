@@ -25,6 +25,7 @@ import { ICategory } from '../../interface/category';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-dashboard-category',
@@ -73,7 +74,8 @@ export class DashboardCategoryComponent implements OnInit {
   constructor(
     private readonly categoriesService: CategoriesService,
     private readonly message: NzMessageService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private readonly title: Title
   ) {
     this.categoryForm = this.fb.group({
       catName: ['', Validators.required],
@@ -82,6 +84,7 @@ export class DashboardCategoryComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.title.setTitle('Danh mục | Grocery Coffee');
     this.loadCategories();
     this.reset();
   }
