@@ -7,8 +7,24 @@ import { Component, Input } from '@angular/core';
 })
 export class OrderInfoComponent {
   @Input() phone: string = '';
+  @Input() name: string = '';
+  @Input() products: any = [];
+  @Input() prdId: string = '';
   @Input() adr: string = '';
   @Input() createdAt: string = '';
   @Input() qty: string = '';
   @Input() total: string = '';
+
+  isVisible = false;
+
+  constructor() {}
+
+  showModal(): void {
+    this.isVisible = true;
+  }
+
+  handleCancel(): void {
+    console.log('Button cancel clicked!');
+    this.isVisible = false;
+  }
 }

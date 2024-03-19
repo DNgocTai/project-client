@@ -11,6 +11,9 @@
         <app-order-info
           *ngFor="let ord of orders"
           [phone]="ord.phoneNumber"
+          [name]="ord.fullName"
+          [prdId]="ord._id"
+          [products]="ord.products"
           [adr]="ord.address"
           [createdAt]="ord.createdAt"
           [qty]="ord.totalQty"

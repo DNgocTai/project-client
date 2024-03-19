@@ -4,7 +4,7 @@ export const CATEGORY_LAYOUT_ROUTES: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'trungnguyen',
+    redirectTo: 'nescafe',
   },
   {
     path: 'trungnguyen',

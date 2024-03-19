@@ -14,32 +14,94 @@
         class="d-flex align-items-center justify-content-around gap-30 flex-1"
       >
         <div>
-          <h3 class="account-info__title">Số điện thoại</h3>
-          <p class="account-info__desc">
-            {{ phone }}
-          </p>
+          <h3 class="account-info__title">Số lượng: {{ qty }}</h3>
         </div>
         <div>
-          <h3 class="account-info__title">Địa chỉ</h3>
-          <p class="account-info__desc">{{ adr }}</p>
+          <h3 class="account-info__title">
+            Tổng: {{ total + 10000 | currency : " " : "symbol" : "1.0-0" }}đ
+          </h3>
         </div>
         <div>
-          <h3 class="account-info__title">Ngày đặt hàng</h3>
-          <p class="account-info__desc">
-            {{ createdAt | date : "dd/MM/yy" }}
-          </p>
-        </div>
-        <div>
-          <h3 class="account-info__title">Số lượng</h3>
-          <p class="account-info__desc">{{ qty }}</p>
-        </div>
-        <div>
-          <h3 class="account-info__title">Tổng</h3>
-          <p class="account-info__desc">
-            {{ total | currency : " " : "symbol" : "1.0-0" }}đ
-          </p>
+          <a
+            nz-button
+            style="color: rgb(61, 163, 248)"
+            [nzSize]="'small'"
+            nzType="link"
+            (click)="showModal()"
+            >Chi tiết</a
+          >
         </div>
       </div>
     </article>
   </div>
 </div>
+
+<nz-modal
+  nzWidth="70%"
+  [(nzVisible)]="isVisible"
+  [nzTitle]="modalTitle"
+  [nzContent]="modalContent"
+  [nzFooter]="modalFooter"
+  (nzOnCancel)="handleCancel()"
+>
+  <ng-template #modalTitle>Chi tiết đơn hàng</ng-template>
+
+  <ng-template #modalContent>
+    <nz-descriptions nzBordered>
+      <nz-descriptions-item nzTitle="Mã sản phẩm">
+        {{ prdId }}
+      </nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Trạng thái" [nzSpan]="3">
+        <nz-badge nzStatus="processing" nzText="Đang xét duyệt"></nz-badge>
+      </nz-descriptions-item>
+
+      <nz-descriptions-item nzTitle="Tên khách hàng">
+        {{ name }}
+      </nz-descriptions-item>
+
+      <nz-descriptions-item nzTitle="Địa chỉ nhận hàng" [nzSpan]="3">
+        {{ adr }}
+      </nz-descriptions-item>
+
+      <nz-descriptions-item nzTitle="Số điện thoại">
+        {{ phone }}
+      </nz-descriptions-item>
+
+      <nz-descriptions-item nzTitle="Thời gian đặt hàng" [nzSpan]="3">
+        {{ createdAt | date : "dd/MM/yyyy" }}
+      </nz-descriptions-item>
+
+      <nz-descriptions-item nzTitle="Giá">
+        {{ total | currency : " " : "symbol" : "1.0-0" }}đ
+      </nz-descriptions-item>
+
+      <nz-descriptions-item nzTitle="Phí vận chuyển">
+        10.000đ
+      </nz-descriptions-item>
+
+      <nz-descriptions-item nzTitle="Tổng giá" [nzSpan]="3">
+        {{ total + 10000 | currency : " " : "symbol" : "1.0-0" }}đ
+      </nz-descriptions-item>
+
+      <nz-descriptions-item nzTitle="Sản phẩm">
+        <ul>
+          <li *ngFor="let prd of products">
+            {{ prd.name }} - x{{ prd.quantity }}
+          </li>
+        </ul>
+      </nz-descriptions-item>
+    </nz-descriptions>
+  </ng-template>
+
+  <ng-template #modalFooter>
+    <button
+      style="color: red; padding: 0 8px; border: 1px solid red"
+      nz-button
+      nzType="default"
+      nzDanger
+      (click)="handleCancel()"
+    >
+      Đóng
+    </button>
+  </ng-template>
+</nz-modal>

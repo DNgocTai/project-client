@@ -38,6 +38,8 @@ import { FavouriteListComponent } from './favourite-list/favourite-list.componen
 import { PaymentComponent } from './payment/payment.component';
 import { OrderComponent } from '../pages/personal-info/order/order.component';
 import { OrderInfoComponent } from './order-info/order-info.component';
+import { NzDescriptionsModule } from 'ng-zorro-antd/descriptions';
+import { NzBadgeModule } from 'ng-zorro-antd/badge';
 
 const COMPONENTS: any[] = [
   ProductCompComponent,
@@ -87,6 +89,8 @@ const COMPONENTS: any[] = [
     NzModalModule,
     NzUploadModule,
     RouterModule,
+    NzDescriptionsModule,
+    NzBadgeModule,
   ],
   exports: [...COMPONENTS],
 })

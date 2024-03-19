@@ -26,25 +26,25 @@
       <ul class="breadcrumbs checkout-page__breadcrumbs">
         <li>
           <a [routerLink]="['/homepage']" class="breadcrumbs__link">
-            Home
+            Trang chủ
             <img src="../../../assets/images/icon/arrow-right.svg" alt="" />
           </a>
         </li>
         <li>
           <a [routerLink]="['/checkout']" class="breadcrumbs__link">
-            Checkout
+            Giỏ hàng
             <img src="../../../assets/images/icon/arrow-right.svg" alt="" />
           </a>
         </li>
         <li>
           <a [routerLink]="['/shipping']" class="breadcrumbs__link">
-            Shipping
+            Đặt hàng
             <img src="../../../assets/images/icon/arrow-right.svg" alt="" />
           </a>
         </li>
         <li>
           <a href="#!" class="breadcrumbs__link breadcrumbs__link--current"
-            >Payment method</a
+            >Thanh toán</a
           >
         </li>
       </ul>
@@ -58,22 +58,40 @@
           <app-shipping></app-shipping>
           <!-- Method -->
           <app-shipping-method></app-shipping-method>
+          <div class="cart-info__separate"></div>
+
+          <div class="cart-info__bottom d-md-none">
+            <div class="row">
+              <div class="col-8 col-xxl-7">
+                <div class="cart-info__continue">
+                  <a href="./" class="cart-info__continue-link">
+                    <img
+                      class="cart-info__continue-icon icon"
+                      src="../../../assets/images/icon/arrow-down.svg"
+                      alt=""
+                    />
+                    Tiếp tục mua sắm
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div
           class="col-4 col-xl-4 col-lg-12 d-flex flex-direction-column gap-20"
         >
           <div class="cart-info">
             <h2 class="cart-info__heading cart-info__heading--lv2">
-              Payment Details
+              Chi tiết thanh toán
             </h2>
             <p class="cart-info__desc">
-              Complete your purchase item by providing your payment details
-              order.
+              Hoàn thành mục mua hàng của bạn bằng cách cung cấp đơn đặt hàng
+              chi tiết thanh toán của bạn.
             </p>
             <form action="" class="form cart-info__form">
               <div class="form__group">
                 <label for="email" class="form__label form__label--medium"
-                  >Email Address</label
+                  >Địa chỉ Email</label
                 >
                 <div class="form__text-input">
                   <input
@@ -90,9 +108,7 @@
                     class="form__input-icon-error"
                   />
                 </div>
-                <p class="form__error">
-                  Password must be at least 6 characters
-                </p>
+                <p class="form__error">Mật khẩu phải chứa ít nhất 6 kí tự</p>
               </div>
               <div class="form__group">
                 <label
@@ -116,9 +132,7 @@
                     class="form__input-icon-error"
                   />
                 </div>
-                <p class="form__error">
-                  Password must be at least 6 characters
-                </p>
+                <p class="form__error">Mật khẩu phải chứa ít nhất 6 kí tự</p>
               </div>
               <div class="form__group">
                 <label
@@ -142,9 +156,7 @@
                     class="form__input-icon-error"
                   />
                 </div>
-                <p class="form__error">
-                  Password must be at least 6 characters
-                </p>
+                <p class="form__error">Mật khẩu phải chứa ít nhất 6 kí tự</p>
               </div>
               <div class="form__row cart-info__form-row">
                 <div class="form__group">
@@ -163,9 +175,7 @@
                       class="form__input-icon-error"
                     />
                   </div>
-                  <p class="form__error">
-                    Password must be at least 6 characters
-                  </p>
+                  <p class="form__error">Mật khẩu phải chứa ít nhất 6 kí tự</p>
                 </div>
                 <div class="form__group">
                   <div class="form__text-input">
@@ -183,9 +193,7 @@
                       class="form__input-icon-error"
                     />
                   </div>
-                  <p class="form__error">
-                    Password must be at least 6 characters
-                  </p>
+                  <p class="form__error">Mật khẩu phải chứa ít nhất 6 kí tự</p>
                 </div>
               </div>
             </form>

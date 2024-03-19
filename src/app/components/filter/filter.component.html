@@ -136,12 +136,14 @@
           <button
             class="btn btn--text filter__cancel js-toggle"
             toggle-target="#home-filter"
+            (click)="isHidden = !isHidden"
           >
             Hủy
           </button>
           <button
             class="btn btn--primary filter__submit js-toggle"
             toggle-target="#home-filter"
+            (click)="isHidden = !isHidden"
           >
             Kết quả
           </button>
