@@ -10,6 +10,7 @@ import {
 } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { LocalStorageService } from 'ngx-webstorage';
+import { environment } from '../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root',
@@ -19,7 +20,7 @@ export class AccountService {
   private authenticationState = new ReplaySubject<IUser | null>(1);
   private accountCache$?: Observable<IUser | null>;
 
-  baseUrl = 'https://project-server-production-f74c.up.railway.app';
+  baseUrl = environment.apiUrl;
 
   constructor(
     private http: HttpClient,

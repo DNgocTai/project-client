@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { ICategory } from '../interface/category';
+import { environment } from '../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CategoriesService {
-  baseUrl = 'https://project-server-production-f74c.up.railway.app';
+  baseUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
 

@@ -5,6 +5,7 @@ import { IUser } from '../interface/user';
 import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 import { AccountService } from './account.service';
 import { CartService } from './cart.service';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +19,7 @@ export class AuthJWTService {
     private cartSrv: CartService
   ) {}
 
-  baseUrl = 'https://project-server-production-f74c.up.railway.app';
+  baseUrl = environment.apiUrl;
 
   login(user: IUser) {
     return this.http

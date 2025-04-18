@@ -2,12 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { IProduct } from '../interface/product';
+import { environment } from '../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductsService {
-  baseUrl = 'https://project-server-production-f74c.up.railway.app';
+  baseUrl = environment.apiUrl;
   constructor(private http: HttpClient) {}
 
   createProduct(product: IProduct): Observable<any> {

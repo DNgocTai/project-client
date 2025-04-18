@@ -1,12 +1,13 @@
 import { HttpClient, HttpEvent } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { LocalStorageService } from 'ngx-webstorage';
+import { environment } from '../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
-  baseUrl = 'https://project-server-production-f74c.up.railway.app';
+  baseUrl = environment.apiUrl;
   cart: any[] = [];
   subTotal: number = 0;
 

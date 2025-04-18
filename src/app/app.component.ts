@@ -5,7 +5,6 @@ import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { ComponentsModule } from './components/components.module';
 import { PagesModule } from './pages/pages.module';
 import { httpInterceptorProviders } from './interceptors';
-import { LocalStorageService } from 'ngx-webstorage';
 
 @Component({
   selector: 'app-root',

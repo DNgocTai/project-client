@@ -7,6 +7,7 @@ import {
   HttpHandler,
   HttpEvent,
 } from '@angular/common/http';
+import { environment } from '../../environments/environment.prod';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -16,8 +17,7 @@ export class AuthInterceptor implements HttpInterceptor {
     private localStorage: LocalStorageService,
     private sessionStorage: SessionStorageService
   ) {
-    this.SERVER_API_URL =
-      'https://project-server-production-f74c.up.railway.app';
+    this.SERVER_API_URL = environment.apiUrl;
   }
 
   intercept(
